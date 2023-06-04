@@ -1,0 +1,12 @@
+<div class="user">
+  <div class="user-header">
+    <h1>ユーザー一覧</h1>
+    <div class="user_main">
+      <div class="user_body">
+        <% @user.each do |user| %>
+          <%= user.name %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

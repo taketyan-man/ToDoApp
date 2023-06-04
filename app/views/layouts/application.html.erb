@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ToDoApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <div class="header">
+      <div class="header-title">
+        <%= link_to("ToDoアプリ", "/", class:"userList") %>
+        <div class="header-con">
+          <ul>
+            <li>
+              <%= link_to("ユーザー一覧", "/user", class:"userList") %>
+            </li>
+            <li>
+              <%= link_to("新規登録", "/user/new", class:"userList") %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>

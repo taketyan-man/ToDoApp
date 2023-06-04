@@ -1,0 +1,57 @@
+.form-error{
+  width: 50%;
+  margin: auto;
+  color: red;
+  padding-bottom: 5px;
+}
+
+.user {
+  text-align: center;
+  padding-top: 20px;
+}
+
+p {
+  padding: 0;
+  margin: 0;
+  padding-top: 12px;
+  padding-bottom: 5px;
+}
+
+input {
+  width: 50%;
+  border: 1px solid #d8dadf;
+  padding: 10px;
+  color: #57575f;
+  font-size: 16px;
+  letter-spacing: 2px;
+  border-radius: 2px;
+}
+
+input[type="submit"] {
+  background-color: #3ecdc6;
+  color: white;
+  cursor: pointer;
+  font-weight: 300;
+  width: 240px;
+  border-radius: 2px;
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+.submit-button {
+  padding-top: 20px;
+  margin-bottom: 20px;
+}
+
+.flash {
+  padding: 10px 0;
+  color: white;
+  background: rgb(88, 183, 251);
+  text-align: center;
+  position: absolute;
+  top: 64px;
+  z-index: 10;
+  width: 100%;
+  border-radius: 0 0 2px 2px;
+  font-size: 14px;
+}
