@@ -19,7 +19,8 @@ class UsersController < ApplicationController
       flash[:notice] = "ユーザー登録成功しました"
       redirect_to("/user/#{@user.id}")
     else
-      render:new, status: :unprocessable_entity
+      
+      render :new
     end
   end
 

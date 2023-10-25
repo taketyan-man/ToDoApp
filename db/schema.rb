@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_03_032631) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_04_052232) do
+  create_table "to_dos", force: :cascade do |t|
+    t.string "text"
+    t.integer "user_id"
+    t.date "limit_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
