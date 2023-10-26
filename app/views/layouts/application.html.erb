@@ -15,12 +15,10 @@
       <div class="header-title">
         <%= link_to("ToDoアプリ", "/", class:"userList") %>
         <div class="header-con">
+        <% if session[:user_id]  %>
           <ul>
             <li>
               <%= link_to("ユーザー一覧", "/user", class:"userList") %>
-            </li>
-            <li>
-              <%= link_to("新規登録", "/user/new", class:"userList") %>
             </li>
             <li>
               <%= link_to("新規投稿", "/tasks/new", class:"userList") %>
@@ -28,7 +26,20 @@
             <li>
               <%= link_to("投稿一覧", "/tasks", class:"userList") %>
             </li>
+            <li>
+              <%= link_to("ログアウト", "/user/logout", data: { "turbo-method": :post }, class:"userList") %>
+            </li>
           </ul>
+        <% else %>
+          <ul>
+            <li>
+              <%= link_to("新規登録", "/user/new", class:"userList") %>
+            </li>
+            <li>
+              <%= link_to("ログイン", "/user/login", class:"userList") %>
+            </li>
+          </ul>
+        <% end %>
         </div>
       </div>
     </div>

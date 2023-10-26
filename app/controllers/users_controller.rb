@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   def index
     @user = User.all
   end
@@ -42,6 +41,32 @@ class UsersController < ApplicationController
     else
       render:edit, status: :unprocessable_entity
     end
+  end
+
+  def detil
+    @user = User.new
+  end
+
+  def login
+    @user = User.find_by(name: params[:name])
+    if @user && @user[:password] == params[:password]
+      sessiono[:user_id] = @user.id
+      flash[:notice] =  "ログインできました"
+      redirect_to home_path
+    elsif @user && @user[:password] != params[:password]
+      flash[:notice] = "パスワードが違います"
+      params[:name] = params[:name]
+      redirect_to user_login_path
+    else
+      flash[:notice] = "ユーザー名が見つかりません"
+      redirect_to user_login_path
+    end
+
+  end
+
+  def logout
+    session[:user_id] = nil
+    redirect_to home_path
   end
 
 end
