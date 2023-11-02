@@ -3,12 +3,22 @@
     <h1>投稿一覧</h1>
     <div class="todo_main">
       <div class="todo_body">
-        <% @todo.each do |todo| %>
+        <% if @todo.instance_of?(Array) %>
+          <% @todo.each do |todo| %>
+            <div class="todo-list">
+              <%= link_to(todo.text, "/tasks/#{todo.id}") %>
+              <%= todo.limit_date %>
+            </div>
+          <% end %>
+        <% elsif @todo %>
           <div class="todo-list">
-            <%= link_to(todo.text, "/tasks/#{todo.id}") %>
-            <%= todo.limit_date %>
+            <%= link_to("#{@todo.text}", "/tasks/#{@todo.id}") %>
+            <%= @todo.limit_date %>
           </div>
+        <% else %>
+            <%= link_to("新規投稿しよう", "/tasks/new") %>
         <% end %>
+
       </div>
     </div>
   </div>

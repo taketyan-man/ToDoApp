@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   def index
-    @todo = ToDo.all
+    @todo = ToDo.find_by(user_id: session[:user_id])
   end
 
   def show
@@ -31,7 +31,7 @@ class TasksController < ApplicationController
 
   def update
     @todo = ToDo.find(params[:id])
-    @todo.taxt = params[:text]
+    @todo.text = params[:text]
     @todo.limit_date = params[:date]
     if @todo.save
       flash[:notice] = "編集が完了しました"
@@ -43,7 +43,9 @@ class TasksController < ApplicationController
 
   def delite
     @todo = ToDo.find(params[:id])
-    
+    @todo.delete
+    flash[:notice] = "Todoを削除しました"
+    redirect_to("/tasks")
   end
 
 end

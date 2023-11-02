@@ -3,3 +3,14 @@
   padding: 20px;
 }
 
+.show-btn {
+  background-color: #3ecdc6;
+  color: white;
+  cursor: pointer;
+  font-weight: 300;
+  width: 240px;
+  border-radius: 2px;
+  margin: auto;
+  margin-top: 8px;
+  margin-bottom: 0;
+}

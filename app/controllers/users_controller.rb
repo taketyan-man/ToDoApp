@@ -50,7 +50,7 @@ class UsersController < ApplicationController
   def login
     @user = User.find_by(name: params[:name])
     if @user && @user[:password] == params[:password]
-      sessiono[:user_id] = @user.id
+      session[:user_id] = @user.id
       flash[:notice] =  "ログインできました"
       redirect_to home_path
     elsif @user && @user[:password] != params[:password]

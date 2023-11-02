@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get '/tasks/:id/edit' => 'tasks#edit'
   get '/tasks/:id' => 'tasks#show'
   post '/tasks/update' => 'tasks#update'
+  post '/tasks/delete' => 'tasks#delete'
   get '/tasks' => 'tasks#index'
 
   get '/user/login' => 'users#detil'
