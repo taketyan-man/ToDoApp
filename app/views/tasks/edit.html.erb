@@ -19,6 +19,10 @@
           <input type="submit" value="編集する">
         </div>
       <% end %>
+      <%= form_tag ("/tasks/delete") do %>
+        <input type="hidden" name="id" value="<%= @todo.id %>">
+        <input type="submit" value="削除する" class="show-btn">
+      <% end %>
     </div>
   </div>
 </div>

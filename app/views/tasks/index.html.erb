@@ -1,24 +1,48 @@
 <div class="todo">
   <div class="todo-header">
-    <h1>投稿一覧</h1>
+    <h1>ToDoリスト</h1>
     <div class="todo_main">
       <div class="todo_body">
-        <% if @todo.instance_of?(Array) %>
-          <% @todo.each do |todo| %>
-            <div class="todo-list">
-              <%= link_to(todo.text, "/tasks/#{todo.id}") %>
-              <%= todo.limit_date %>
-            </div>
-          <% end %>
-        <% elsif @todo %>
-          <div class="todo-list">
-            <%= link_to("#{@todo.text}", "/tasks/#{@todo.id}") %>
-            <%= @todo.limit_date %>
-          </div>
+        <% if @todo.blank? %>
+          <%= link_to("ToDoを追加しよう", "/tasks/new", class: "list-text") %>
         <% else %>
-            <%= link_to("新規投稿しよう", "/tasks/new") %>
+          <% @todo.each do |todo| %>
+            
+            <div class="todo-list">
+              <div class="index-text-box"> 
+                <%= link_to(todo.text, "/tasks/#{todo.id}/edit", class: "todo-list-text") %>
+              </div>
+              <div class="index-limit">
+              <a><%= todo.limit_date %></a> 
+              </div>
+            
+              <div class="index-btn-box">
+                <%= button_to '完了', done_path(todo.id),  date:{"turbo-method": :post}, class:"index-done-btn"%>
+              </div>
+            </div>
+            
+          <% end %>    
         <% end %>
-
+        
+        <% if @todo_done.blank?%>
+            <% m = 1 %>
+        <% else %>
+        <h2>完了済み</h2>
+          <% @todo_done.each do |todo| %>
+            <div class="todo-list">
+              <div class="index-text-box">
+                <%= link_to(todo.text, "/tasks/#{todo.id}/edit", class: "todo-list-text") %>
+              </div>
+              <div class="index-limit">
+              <a><%= todo.limit_date %></a>
+              </div>
+              <div class="index-btn-box">
+                <%= button_to '未完了', done_path(todo.id),  date:{"turbo-method": :post}, class:"index-done-btn"%>
+              </div>
+            </div>
+          <% end %>    
+        <% end %>
+        
       </div>
     </div>
   </div>

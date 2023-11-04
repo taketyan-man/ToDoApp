@@ -3,14 +3,87 @@
   padding: 20px;
 }
 
-.show-btn {
+/* index.html.erbのレイアウト */
+.todo-list {
+  border-left: 12px solid #3ecdc6;
+  display: flex;
+  margin-bottom: 8px;
+  background-color: rgb(225, 225, 225);
+  padding: 40px 0;
+}
+
+.index-text-box{
+  width: 50%;
+}
+
+.list-text {
+  text-decoration: none;
+  padding: 8px;
+  background-color: #3ecdc6;
+  border-radius: 24px;
+}
+
+.todo-list-text {
+  text-decoration: none;
+  cursor: pointer;
+  color: #ff9d00;
+  padding-right: 5px;
+  padding-left: 12px;
+  margin-right: 4px;
+}
+
+.index-limit {
+  margin-right: 20px;
+}
+
+.index-btn-box {
+  margin-left: auto;
+  padding-right: 12px;
+}
+
+.index-done-btn {
+  padding: 8px 10px;
+  border: 2px black solid;
+  background-color: #3ecdc6;
+  border-radius: 4px;
+}
+
+/* edit.html.erbのレイアウト */
+.edit-btn {
   background-color: #3ecdc6;
   color: white;
   cursor: pointer;
   font-weight: 300;
-  width: 240px;
   border-radius: 2px;
   margin: auto;
   margin-top: 8px;
   margin-bottom: 0;
+  width: 240px;
+  padding: 8px 0;
+  display: block;
+  border: 1px solid #d8dadf;
+  letter-spacing: 2px;
+  text-decoration: none;
+} 
+
+/* show.html.erbのレイアウト */
+.show-todo-box {
+  border-bottom: 1px black solid;
+  margin-bottom: 16px;
+}
+
+.show-user-name {
+  text-align: left;
+  font-size: 16px;
+  font-weight: bold;
+  padding-left: 4px;
+}
+
+.show-todo-text {
+  font-size: 16px;
+}
+
+.show-todo-date {
+  text-align: right;
+  padding-right: 8px;
 }

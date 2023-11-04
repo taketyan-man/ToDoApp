@@ -18,13 +18,16 @@
         <% if session[:user_id]  %>
           <ul>
             <li>
-              <%= link_to("ユーザー一覧", "/user", class:"userList") %>
+              <%= User.find(session[:user_id]).name %>
             </li>
             <li>
-              <%= link_to("新規投稿", "/tasks/new", class:"userList") %>
+              <%= link_to("追加", "/tasks/new", class:"userList") %>
             </li>
             <li>
-              <%= link_to("投稿一覧", "/tasks", class:"userList") %>
+              <%= link_to("リスト", "/tasks", class:"userList") %>
+            </li>
+            <li>
+              <%= link_to("一覧", "/tasks/list", class:"userList") %>
             </li>
             <li>
               <%= link_to("ログアウト", "/user/logout", data: { "turbo-method": :post }, class:"userList") %>
