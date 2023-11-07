@@ -37,7 +37,7 @@ class TasksController < ApplicationController
     @todo.limit_date = params[:date]
     if @todo.save
       flash[:notice] = "編集が完了しました"
-      redirect_to("/tasks/#{@todo.id}")
+      redirect_to("/tasks")
     else
       render:edit, status: :unprocessable_entity
     end

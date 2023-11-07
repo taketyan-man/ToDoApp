@@ -8,7 +8,7 @@
         <% else %>
           <% @todo.each do |todo| %>
             
-            <div class="todo-list">
+            <div class="todo-list <%= "todo-list-out" if todo.limit_date <= Date.today %>">
               <div class="index-text-box"> 
                 <%= link_to(todo.text, "/tasks/#{todo.id}/edit", class: "todo-list-text") %>
               </div>

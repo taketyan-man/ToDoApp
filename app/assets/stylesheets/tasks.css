@@ -12,6 +12,10 @@
   padding: 40px 0;
 }
 
+.todo-list-out {
+  border-left: 12px solid #fd3a3a;
+}
+
 .index-text-box{
   width: 50%;
 }
@@ -30,6 +34,10 @@
   padding-right: 5px;
   padding-left: 12px;
   margin-right: 4px;
+}
+
+.todo-list-out div{
+  color: #fd3a3a;
 }
 
 .index-limit {
