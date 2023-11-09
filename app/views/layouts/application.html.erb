@@ -8,6 +8,7 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.9.0/css/all.css">
   </head>
 
   <body>
@@ -49,6 +50,11 @@
     <% if flash[:notice] %>
       <div class="flash">
         <%= flash[:notice] %>
+      </div>
+    <% end %>
+    <% if flash[:attention] %>
+      <div class="attention">
+        <%= flash[:attention] %>
       </div>
     <% end %>
     <%= yield %>

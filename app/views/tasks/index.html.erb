@@ -1,11 +1,21 @@
 <div class="todo">
   <div class="todo-header">
     <h1>ToDoリスト</h1>
-    <div class="todo_main">
-      <div class="todo_body">
+    <div class="tab-list">
+    <ul class="tab-con">
+    <li class="tab tab-active">未完了</li>
+    <li class="tab">完了</li>
+    <li class="tab">応援</li>
+    </ul>
+    </div>
+  </div> 
+  <div class="todo_main">
+    <div class="todo_body">
+      <div class="todo-list-box todo-index-active">
         <% if @todo.blank? %>
           <%= link_to("ToDoを追加しよう", "/tasks/new", class: "list-text") %>
         <% else %>
+          <h2>未完タスク</h2>
           <% @todo.each do |todo| %>
             
             <div class="todo-list <%= "todo-list-out" if todo.limit_date <= Date.today %>">
@@ -23,7 +33,9 @@
             
           <% end %>    
         <% end %>
+      </div>
         
+        <div class="todo-list-box">
         <% if @todo_done.blank?%>
             <% m = 1 %>
         <% else %>
@@ -42,8 +54,8 @@
             </div>
           <% end %>    
         <% end %>
+        </div>
         
-      </div>
     </div>
   </div>
 </div>

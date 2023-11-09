@@ -16,7 +16,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       flash[:notice] = "ユーザー登録成功しました"
-      redirect_to("/user/#{@user.id}")
+      redirect_to tasks_path
     else
       
       render :new
@@ -52,7 +52,7 @@ class UsersController < ApplicationController
     if @user && @user[:password] == params[:password]
       session[:user_id] = @user.id
       flash[:notice] =  "ログインできました"
-      redirect_to home_path
+      redirect_to tasks_path
     elsif @user && @user[:password] != params[:password]
       flash[:notice] = "パスワードが違います"
       params[:name] = params[:name]

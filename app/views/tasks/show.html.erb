@@ -6,7 +6,7 @@
         <% @todo.each do |todo| %>
           <div class="show-todo-box">
             <div class="show-user-name">
-              <%= User.find(todo.user_id).name %>
+              <%= liknk_to(User.find(todo.user_id).name, ) %>
             </div>
             <div class="show-todo-text">
               <%= todo.text %>
@@ -14,7 +14,14 @@
             <div class="show-todo-date">
               <%= todo.limit_date %>
             </div>
-          </div>
+            <button class="fas_button_border"><% if todo.fight != 0 %>
+            <%= todo.fight %>
+            <% end %></button>
+            
+            <button class="fas_header_bordertransparent"><% if todo.comment != 0 %>
+            <%= todo.comment %>
+            <% end %></button>
+            </div>
         <% end %>
       </div>
     </div>
