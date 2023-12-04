@@ -2,6 +2,12 @@ class TasksController < ApplicationController
   def index
     @todo = ToDo.where(user_id: session[:user_id], done: false).order(limit_date: "ASC")
     @todo_done = ToDo.where(user_id: session[:user_id], done: true).order(limit_date: "DESC")
+
+    @todo_fight = []
+    fight = Fight.where(user_id: session[:user_id]).order(create_at: "DESC")
+    fight.length.times do |i|
+      @todo_fight[i] = ToDo.find(fight[i].to_do_id)
+    end
   end
 
   def show
@@ -82,4 +88,10 @@ class TasksController < ApplicationController
       redirect_to tasks_path
     end
   end
+
+  def yourshow
+    @user = User.find(params[:id])
+    @todos = Todo,where(user_id: params[:id])
+  end
+
 end

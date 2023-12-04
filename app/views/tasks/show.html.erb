@@ -1,29 +1,26 @@
 <div class="todo">
   <div class="todo-header">
     <h1>他の人のToDo</h1>
-    <div class="todo_main">
-      <div class="todo_body">
-        <% @todo.each do |todo| %>
-          <div class="show-todo-box">
-            <div class="show-user-name">
-              <%= liknk_to(User.find(todo.user_id).name, ) %>
-            </div>
-            <div class="show-todo-text">
-              <%= todo.text %>
-            </div>
-            <div class="show-todo-date">
-              <%= todo.limit_date %>
-            </div>
-            <button class="fas_button_border"><% if todo.fight != 0 %>
-            <%= todo.fight %>
-            <% end %></button>
+  </div>
+  <div class="todo_main">
+    <% @todo.each do |todo| %>
+      <div class="show-todo-box">
+      <%= link_to "/tasks/#{todo.id}/comment",class: "comment-link" do %> 
+          <h2><%= User.find(todo.user_id).name %></h2>
+          <p class="todo-text"><%= todo.text %></p>
+          <p class="todo-date"><%= todo.limit_date %></p>
+          <% if todo.fighted?(session[:user_id]) %>
+            <%= link_to("#{Fight.where(to_do_id: todo.id).size}","/tasks/#{todo.id}/fight/#{Fight.find_by(user_id: session[:user_id], to_do_id: todo.id).id}", class: "fas_button_border_after") %>
+          <% else %>
+            <%= link_to("#{Fight.where(to_do_id: todo.id).size}","/tasks/#{todo.id}/fight", class: "fas_button_border") %>
+          <% end %>
+
+          <%= link_to("#{Comment.where(to_do_id: todo.id).size}", "/tasks/#{todo.id}/comment/new", class: "fas_header_bordertransparent") %>
             
-            <button class="fas_header_bordertransparent"><% if todo.comment != 0 %>
-            <%= todo.comment %>
-            <% end %></button>
-            </div>
-        <% end %>
-      </div>
-    </div>
+      
+          <% end %>
+        </div>
+    <% end %>
+      
   </div>
 </div>

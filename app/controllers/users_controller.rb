@@ -23,6 +23,11 @@ class UsersController < ApplicationController
     end
   end
 
+  def logout
+    session[:user_id] = nil
+    redirect_to home_path
+  end
+
   def show
     @user = User.find(params[:id])
   end
@@ -43,7 +48,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def detil
+  def yourdetil
     @user = User.new
   end
 
@@ -63,10 +68,4 @@ class UsersController < ApplicationController
     end
 
   end
-
-  def logout
-    session[:user_id] = nil
-    redirect_to home_path
-  end
-
 end

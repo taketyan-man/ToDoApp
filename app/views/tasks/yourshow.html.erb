@@ -1,0 +1,21 @@
+<div class="todo">
+  <div class="todo-header">
+    <h1><%= @user.name %>さん</h1>
+    <div class="tab-list">
+      <ul class="tab-con">
+        <li class="show-tab show-tab-active">未完了</li>
+        <li class="show-tab">完了</li>
+      </ul>
+    </div>
+  </div>
+  <div class="todo-body">
+    <div class="todo-list-box show-active">
+      <% if @todos.blank? %>
+        <p>この人はToDoがまだありません</p>
+      <% else %>
+        <h2>未完了タスク</h2>
+        <% @todos.each do |todo| %>
+        <% end %>
+    </div>
+  </div>
+</div>

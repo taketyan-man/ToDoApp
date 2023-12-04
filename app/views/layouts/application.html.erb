@@ -19,7 +19,7 @@
         <% if session[:user_id]  %>
           <ul>
             <li>
-              <%= User.find(session[:user_id]).name %>
+              <%= link_to("#{User.find(session[:user_id]).name }", "/user/show/#{session[:user_id]}", class:"userList") %>
             </li>
             <li>
               <%= link_to("追加", "/tasks/new", class:"userList") %>

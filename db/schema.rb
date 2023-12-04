@@ -10,7 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_09_123438) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_28_114330) do
+  create_table "comments", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "to_do_id", null: false
+    t.string "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["to_do_id"], name: "index_comments_on_to_do_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "fights", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "to_do_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["to_do_id"], name: "index_fights_on_to_do_id"
+    t.index ["user_id"], name: "index_fights_on_user_id"
+  end
+
   create_table "to_dos", force: :cascade do |t|
     t.string "text"
     t.integer "user_id"
@@ -30,4 +49,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_09_123438) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "comments", "to_dos"
+  add_foreign_key "comments", "users"
+  add_foreign_key "fights", "to_dos"
+  add_foreign_key "fights", "users"
 end

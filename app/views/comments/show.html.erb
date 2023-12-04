@@ -1,0 +1,22 @@
+<div class="comment-show">
+  <div class="comment-show-todo">
+    <h2><%= User.find(@todo.user_id).name %></h2>
+    <p class="todo-text"><%= @todo.text %></p>
+    <p class="todo-date"><%= @todo.limit_date %></p>
+    <% if @todo.fighted?(session[:user_id]) %>
+      <%= link_to("#{Fight.where(to_do_id: @todo.id).size}","/tasks/#{@todo.id}/fight/#{Fight.find_by(user_id: session[:user_id], to_do_id: @todo.id).id}", class: "fas_button_border_after") %>
+    <% else %>
+      <%= link_to("#{Fight.where(to_do_id: @todo.id).size}","/tasks/#{@todo.id}/fight", class: "fas_button_border") %>
+    <% end %>
+    <%= link_to("#{Comment.where(to_do_id: @todo.id).size}", "/tasks/#{@todo.id}/comment/new", class: "fas_header_bordertransparent") %>
+  </div>
+  <% @comments.each do |comment| %>
+    <div class="comment-cnt">
+      <p><%= User.find(comment.user_id).name %></p>
+      <p><%= comment.text %></p>
+      <div>
+      <%= link_to('削除する', "/tasks/#{@todo.id}/comment/#{comment.id}", class: "comment-delete" )%>
+      </div>
+    </div>
+  <% end %>
+</div>

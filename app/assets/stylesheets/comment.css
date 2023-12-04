@@ -1,0 +1,70 @@
+/* show.html,erb のレイアウト */
+.comment-show{
+  text-align: center;
+}
+
+.comment-show-todo{
+  background-color: rgb(210, 210, 210);
+  margin-top: 80px;
+  padding-bottom: 16px;
+  margin-bottom: 12px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.comment-show-todo h2{
+  text-align: left;
+  padding: 0;
+  margin: 0;
+  padding-left: 32px;
+  
+}
+
+.comment-new-button {
+  padding: 8px 10px;
+  font-size: 12px;
+  border: 2px black solid;
+  background-color: #3ecdc6;
+  border-radius: 20px;
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+
+.comment-cnt{
+  border-bottom: 2px solid black;
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+
+}
+
+.comment-cnt div {
+  padding-top: 12px;
+  padding-bottom: 4px;
+}
+
+.comment-delete {
+  margin-top: 12px;
+  padding: 0;
+  text-decoration: none;
+  width: 68px;
+}
+
+
+/* new.html.erb のレイアウト */
+.comment-new-form {
+  text-align: center;
+  margin-top: 56px;
+  padding-top: 32px;
+  background-color: rgb(253, 244, 234);
+  padding-bottom: 32px;
+}
+
+.newtext {
+  padding: 12px;
+  font-size: 24px;
+}
+
+.comment-new-submit {
+  text-align: center;
+}
