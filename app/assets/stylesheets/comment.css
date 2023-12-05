@@ -17,6 +17,7 @@
   padding: 0;
   margin: 0;
   padding-left: 32px;
+  margin-top: 16px;
   
 }
 
@@ -31,23 +32,34 @@
   cursor: pointer;
 }
 
+.comment-box{
+  width: 680px;
+  margin: auto;
+  padding-top: 30px;
+}
+
 .comment-cnt{
-  border-bottom: 2px solid black;
+  border-bottom: 1px solid black;
   display: grid;
   grid-template-columns: 33% 33% 33%;
 
 }
 
+.comment-cnt:first-child{
+  border-top: 1px solid black;
+}
+
 .comment-cnt div {
   padding-top: 12px;
   padding-bottom: 4px;
+  margin-top: auto;
 }
 
 .comment-delete {
-  margin-top: 12px;
   padding: 0;
   text-decoration: none;
   width: 68px;
+  color: #ed8c4c;
 }
 
 

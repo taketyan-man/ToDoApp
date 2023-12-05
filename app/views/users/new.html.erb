@@ -10,7 +10,7 @@
       <% end %>
 
       <%= form_tag("/user/create") do %>
-        <p>ユーザー名</p>
+        <p>ユーザー名(10文字以内)</p>
         <input name="name" value="<%= @user.name %>">
         <p>メールアドレス</p>
         <input name="email" value="<%= @user.email %>">

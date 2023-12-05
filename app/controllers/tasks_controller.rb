@@ -13,7 +13,6 @@ class TasksController < ApplicationController
   def show
     @todo = ToDo.all.order(id: "DESC")
     @todo_fight = ToDo.all.order(fight: "DESC")
-    @todo_create_date = ToDo.all.order(create_at: "DESC")
   end
 
   def yourshow
@@ -30,7 +29,8 @@ class TasksController < ApplicationController
       user_id: session[:user_id],
       limit_date: params[:date],
       done: false,
-      fight: 0
+      fight: 0,
+      comment: 0
     )
     if @todo[:limit_date].nil?
       flash[:attention] = "リミット日時を正しく入力してください"
@@ -67,14 +67,15 @@ class TasksController < ApplicationController
       flash[:notice] = "編集が完了しました"
       redirect_to("/tasks")
     else
+      flash[:attention] = ["何か問題が発生しています", "確認してください"]
       render:edit, status: :unprocessable_entity
     end
   end
 
   def delete
     @todo = ToDo.find(params[:id])
-    @todo.delete
-    flash[:notice] = "Todoを削除しました"
+    @todo.destroy
+    flash[:notice] = "タスクを削除しました"
     redirect_to("/tasks")
   end
 

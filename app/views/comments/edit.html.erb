@@ -1,0 +1,16 @@
+<div class="comment-new-box">
+  <% @comment.errors.full_messages.each do |message| %>
+    <div class="form-error">
+      <%= message %>
+    </div>
+  <% end %>
+
+  <%= form_tag("/tasks/comment/#{@comment.id}/update") do %>
+    <div class="comment-new-form">
+      <textarea class="newtext" name="text" rows="5" cols="33"><%= @comment.text %></textarea>
+      <div class="submit-button comment-new-submit">
+        <input type="submit" value="編集する">
+      </div>
+    </div>
+  <% end %>
+</div>

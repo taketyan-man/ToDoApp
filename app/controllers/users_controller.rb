@@ -42,7 +42,7 @@ class UsersController < ApplicationController
     @user.email = params[:email]
     if @user.save
       flash[:notice] = "編集が完了しました"
-      redirect_to("/user/#{@user.id}")
+      redirect_to("/tasks/list")
     else
       render:edit, status: :unprocessable_entity
     end

@@ -16,21 +16,22 @@
       <% else %>
         <h2>未完タスク</h2>
         <% @todo.each do |todo| %>
-            
-          <div class="todo-list <%= "todo-list-out" if todo.limit_date <= Date.today %>">
+          
+          <div class="todo-list <%= 'todo-list-out' if todo.limit_date <= Date.today %>">
+          
           <div class="list-grid">
-            <div class="index-text-box"> 
-              <%= link_to(todo.text, "/tasks/#{todo.id}/edit", class: "todo-list-text") %>
-            </div>
-            <div class="index-limit">
-              <a><%= todo.limit_date %></a> 
-            </div>
-            
+            <%= link_to "/tasks/#{todo.id}/comment",class: "comment-link" do %> 
+              <p class="todo-list-text index-text-box"><%= todo.text %></p>
+            <% end %>
+            <%= link_to "/tasks/#{todo.id}/comment",class: "comment-link" do %> 
+              <p class="index-limit"><%= todo.limit_date %></p> 
+            <% end %>
             <div class="index-btn-box">
-              <%= button_to '完了', done_path(todo.id),  date:{"turbo-method": :post}, class:"index-done-btn"%>
-            </div>
+                <%= button_to '完了', done_path(todo.id),  date:{"turbo-method": :post}, class:"index-done-btn"%>
+              </div>
           </div>
-            
+
+          <div class="sub-cont">  
           <% if todo.fighted?(session[:user_id]) %>
             <%= link_to("#{Fight.where(to_do_id: todo.id).size}","/tasks/#{todo.id}/fight/#{Fight.find_by(user_id: session[:user_id], to_do_id: todo.id).id}", class: "fas_button_border_after") %>
           <% else %>
@@ -38,8 +39,11 @@
           <% end %>
 
           <%= link_to("#{Comment.where(to_do_id: todo.id).size}", "/tasks/#{todo.id}/comment/new", class: "fas_header_bordertransparent") %>
+
+          <%= link_to("","/tasks/#{todo.id}/edit", class: "fas fa-pen fa-lg edit-pen") %>
           </div>
-        <% end %>    
+        </div>
+      <% end %>   
       <% end %>
     </div>
         
@@ -53,16 +57,17 @@
           <% @todo_done.each do |todo| %>
             <div class="todo-list">
               <div class="list-grid">
-                <div class="index-text-box">
-                  <%= link_to(todo.text, "/tasks/#{todo.id}/edit", class: "todo-list-text") %>
-                </div>
-                <div class="index-limit">
-                  <a><%= todo.limit_date %></a>
-                </div>
+                <%= link_to "/tasks/#{todo.id}/comment",class:  "comment-link" do %> 
+                  <p class="todo-list-text index-text-box"><%= todo.text %></p>
+                <% end %>
+                <%= link_to "/tasks/#{todo.id}/comment",class: "comment-link" do %> 
+                  <p class="index-limit"><%= todo.limit_date %></p> 
+                <% end %>
                 <div class="index-btn-box">
                   <%= button_to '未完了', done_path(todo.id),  date:{"turbo-method": :post}, class:"index-done-btn"%>
                 </div>
               </div>
+              <div class="sub-cont">
               <% if todo.fighted?(session[:user_id]) %>
                 <%= link_to("#{Fight.where(to_do_id: todo.id).size}","/tasks/#{todo.id}/fight/#{Fight.find_by(user_id: session[:user_id], to_do_id: todo.id).id}", class: "fas_button_border_after") %>
               <% else %>
@@ -70,6 +75,9 @@
               <% end %>
   
               <%= link_to("#{Comment.where(to_do_id: todo.id).size}", "/tasks/#{todo.id}/comment/new", class: "fas_header_bordertransparent") %>
+
+              <%= link_to("","/tasks/#{todo.id}/edit", class: "fas fa-pen fa-lg edit-pen") %>
+              </div>
             </div>
           <% end %>    
         <% end %>
@@ -95,7 +103,7 @@
             <%= link_to("#{Comment.where(to_do_id: todo.id).size}", "/tasks/#{todo.id}/comment/new", class: "fas_header_bordertransparent") %>
             <% end %>
             </div>
-          <% end %>    
+            <% end %>    
         <% end %>
       </div>
         

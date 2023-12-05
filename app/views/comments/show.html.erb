@@ -1,3 +1,4 @@
+<div class="todo">
 <div class="comment-show">
   <div class="comment-show-todo">
     <h2><%= User.find(@todo.user_id).name %></h2>
@@ -10,13 +11,17 @@
     <% end %>
     <%= link_to("#{Comment.where(to_do_id: @todo.id).size}", "/tasks/#{@todo.id}/comment/new", class: "fas_header_bordertransparent") %>
   </div>
+  <div class="comment-box">
   <% @comments.each do |comment| %>
     <div class="comment-cnt">
       <p><%= User.find(comment.user_id).name %></p>
       <p><%= comment.text %></p>
       <div>
-      <%= link_to('削除する', "/tasks/#{@todo.id}/comment/#{comment.id}", class: "comment-delete" )%>
+      <%= link_to('' , "/tasks/comment/#{comment.id}/edit", class: "fas fa-pen fa-lg edit-pen") %>
+      <%= link_to('', "/tasks/#{@todo.id}/comment/#{comment.id}/",class: "comment-delete fas fa-trash-alt fa-lg" ) %>
       </div>
     </div>
   <% end %>
+  </div>
+</div>
 </div>

@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   get '/tasks/:to_do_id/comment/new' => 'comments#new'
   post '/tasks/:to_do_id/comment/create'  => 'comments#create'
   get '/tasks/:to_do_id/comment/:id'  => 'comments#destroy'
-  
+  get '/tasks/comment/:id/edit' => 'comments#edit'
+  post '/tasks/comment/:id/update' => 'comments#update'
 
   get '/tasks/:to_do_id/fight' => 'fights#create'
   get '/tasks/:to_do_id/fight/:id' => 'fights#destroy'

@@ -20,6 +20,7 @@
   cursor: pointer;
   padding-left: 0;
   padding :5px;
+  margin-right: 2px;
 }
 
 .tab-active {
@@ -52,8 +53,6 @@
   border-left: 12px solid #fd3a3a;
 }
 
-
-
 .list-text {
   text-decoration: none;
   padding: 8px;
@@ -80,6 +79,7 @@
 
 .index-btn-box {
   margin-left: auto;
+  text-align: left;
   padding-right: 12px;
 }
 
@@ -89,6 +89,22 @@
   background-color: #3ecdc6;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.sub-cont{
+  text-align: center;
+  margin: auto;
+  margin-top: 16px;
+  width: 240px;
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+}
+
+.edit-pen {
+  text-decoration: none;
+  color: #ed8c4c;
+  padding: 4px 20px 0;
+  
 }
 
 .done-list.is-hidden {
@@ -128,6 +144,14 @@
 } 
 
 /* show.html.erbのレイアウト */
+.show-box{
+  display: none;
+}
+
+.active-box {
+  display: block;
+}
+
 .show-todo-box {
   border-bottom: 1px black solid;
   padding-bottom: 16px;

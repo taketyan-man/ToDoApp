@@ -32,13 +32,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_28_114330) do
 
   create_table "to_dos", force: :cascade do |t|
     t.string "text"
-    t.integer "user_id"
+    t.integer "user_id", null: false
     t.date "limit_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "done"
     t.integer "fight"
     t.integer "comment"
+    t.index ["user_id"], name: "index_to_dos_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -53,4 +54,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_28_114330) do
   add_foreign_key "comments", "users"
   add_foreign_key "fights", "to_dos"
   add_foreign_key "fights", "users"
+  add_foreign_key "to_dos", "users"
 end
