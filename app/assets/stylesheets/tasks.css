@@ -260,3 +260,11 @@
 	content: '\f4ad';
   text-decoration: none;
 }
+
+.fa-exclamation-circle {
+  text-decoration: none;
+  color: #ed8c4c;
+  font-size: 1.33333em;
+  width: 68px;
+  cursor: pointer;
+}

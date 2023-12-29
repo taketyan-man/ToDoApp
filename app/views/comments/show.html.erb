@@ -14,14 +14,36 @@
   <div class="comment-box">
   <% @comments.each do |comment| %>
     <div class="comment-cnt">
-      <p><%= User.find(comment.user_id).name %></p>
+      <p class="comment-user-name"><%= User.find(comment.user_id).name %></p>
       <p><%= comment.text %></p>
-      <div>
-      <%= link_to('' , "/tasks/comment/#{comment.id}/edit", class: "fas fa-pen fa-lg edit-pen") %>
-      <%= link_to('', "/tasks/#{@todo.id}/comment/#{comment.id}/",class: "comment-delete fas fa-trash-alt fa-lg" ) %>
+      <div class="commets-edit">
+        <% if session[:user_id] == comment.user_id %>
+          <%= link_to('' , "/tasks/comment/#{comment.id}/edit", class: "fas fa-pen fa-lg edit-pen") %>
+        <% end %>
+        <% if session[:user_id] == comment.user_id || session[:user_id] == @todo.user_id %>
+          <i class="comment-delete fas fa-trash-alt fa-lg alert-button"></i>
+          <div class="alert-box">
+            <h3>本当に削除しますか？</h3>
+            <div class="grid-herf">
+            <%= link_to('Yes', "/tasks/#{@todo.id}/comment/#{comment.id}/",class: "alert-yes" ) %>
+            <p class="alert-no">No</p>
+            </div>
+          </div>
+        <% else %>
+          <i class="fas fa-exclamation-circle alert-button"></i>
+          <div class="alert-box">
+            <h3>本当に報告しますか？</h3>
+            <div class="grid-herf">
+            <%= link_to('Yes', "/tasks/#{@todo.id}/comment/#{comment.id}/",class: "alert-yes" ) %>
+            <p class="alert-no">No</p>
+            </div>
+          </div>
+        <% end %>
       </div>
     </div>
   <% end %>
   </div>
+  
 </div>
+
 </div>

@@ -9,5 +9,11 @@ $(function (){
     $('.todo-list-box').eq(index).addClass('todo-index-active');
   });
 
-  
+  $('.alert-button').on('click', function(){
+    $(this).next('.alert-box').addClass('active');
+  })
+
+  $('.alert-no').on('click', function(){
+    $(this).parent().parent().removeClass('active');
+  })
 });
