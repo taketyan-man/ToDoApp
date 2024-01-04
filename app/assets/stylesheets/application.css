@@ -44,6 +44,8 @@
 .userList {
   color: #2d3133;
   text-decoration: none;
+  margin-top: 8px;
+  border-bottom: #2d3133 1px solid;
 }
 
 ul {

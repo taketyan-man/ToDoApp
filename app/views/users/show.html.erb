@@ -5,7 +5,9 @@
       <div class="user_body">
         <h2><%= @user.name %></h2>
         <p>メールアドレス：<%= @user.email %></p>
-        <%= link_to("編集", "/user/#{@user.id}/edit", class:"userList") %>
+        <p>達成済タスク：<%= @todos.where(done: true).count %></p>
+        <p>未達成タスク：<%= @todos.where(done: false).count %></p>
+        <p class="userEdit"><%= link_to("編集", "/user/#{@user.id}/edit", class:"userList") %></p>
       </div>
     </div>
   </div>
