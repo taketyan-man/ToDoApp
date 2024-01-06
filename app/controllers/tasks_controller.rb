@@ -11,8 +11,8 @@ class TasksController < ApplicationController
   end
 
   def show
-    @todo = ToDo.all.order(id: "DESC")
-    @todo_fight = ToDo.all.order(fight: "DESC")
+    @todo = ToDo.includes(:user, :fights).order(id: "DESC")
+    @todo_fight = ToDo.includes(:user, :fights).order(fight: "DESC")
   end
 
   def yourshow

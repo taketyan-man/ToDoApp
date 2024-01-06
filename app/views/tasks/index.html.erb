@@ -32,7 +32,7 @@
           </div>
 
           <div class="sub-cont">  
-          <% if todo.fighted?(session[:user_id]) %>
+          <% if todo.fights.where(user_id: session[:user_id]).exists?%>
             <%= link_to("#{Fight.where(to_do_id: todo.id).size}","/tasks/#{todo.id}/fight/#{Fight.find_by(user_id: session[:user_id], to_do_id: todo.id).id}", class: "fas_button_border_after") %>
           <% else %>
             <%= link_to("#{Fight.where(to_do_id: todo.id).size}","/tasks/#{todo.id}/fight", class: "fas_button_border") %>

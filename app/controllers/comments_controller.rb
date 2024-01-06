@@ -60,8 +60,15 @@ class CommentsController < ApplicationController
       @todo.save
       redirect_to("/tasks/#{@comment.to_do_id}/comment")
     else
-      flash[:attention] = "あなたにはその権限がありません"
+      flash[:attention] = "あなたにはその権限がありません。"
       redirect_to("/tasks/#{@comment.to_do_id}/comment")
     end
   end
+
+  def report
+    @comment = Comment.find(params[:id])
+    flash[:notice] = "そのコメントを報告しました。"
+    redirect_to("/tasks/#{@comment.to_do_id}/comment")
+  end
+
 end
