@@ -11,14 +11,12 @@
   </div> 
   <div class="todo-body">
     <div class="todo-list-box todo-index-active">
-      <% if @todo.blank? %>
+      <% if @todo.size == 0 %>
         <%= link_to("ToDoを追加しよう", "/tasks/new", class: "list-text") %>
       <% else %>
         <h2>未完タスク</h2>
         <% @todo.each do |todo| %>
-          
           <div class="todo-list <%= 'todo-list-out' if todo.limit_date <= Date.today %>">
-          
           <div class="list-grid">
             <%= link_to "/tasks/#{todo.id}/comment",class: "comment-link" do %> 
               <p class="todo-list-text index-text-box"><%= todo.text %></p>
@@ -31,15 +29,20 @@
               </div>
           </div>
 
-          <div class="sub-cont">  
-          <% if todo.fights.where(user_id: session[:user_id]).exists?%>
-            <%= link_to("#{Fight.where(to_do_id: todo.id).size}","/tasks/#{todo.id}/fight/#{Fight.find_by(user_id: session[:user_id], to_do_id: todo.id).id}", class: "fas_button_border_after") %>
-          <% else %>
-            <%= link_to("#{Fight.where(to_do_id: todo.id).size}","/tasks/#{todo.id}/fight", class: "fas_button_border") %>
+          <div class="sub-cont">
+          <% todo.fights.each do |fight, n| %>
+            <% if fight.user_id == session[:user_id] %>
+              <%= link_to("#{todo.fight}","/tasks/#{todo.id}/fight/#{fight.id}", class: "fas_button_border_after") %>
+              <% break %> 
+            <% end %>
+            <% if n == todo.fights.size - 1 %>
+              <%= link_to("#{todo.fight}","/tasks/#{todo.id}/fight", class: "fas_button_border") %>
+            <% end %>
           <% end %>
-
-          <%= link_to("#{Comment.where(to_do_id: todo.id).size}", "/tasks/#{todo.id}/comment/new", class: "fas_header_bordertransparent") %>
-
+          <% if todo.fights.size == 0 %>
+            <%= link_to("#{todo.fight}","/tasks/#{todo.id}/fight", class: "fas_button_border") %>
+          <% end %>
+          <%= link_to("#{todo.comment}", "/tasks/#{todo.id}/comment/new", class: "fas_header_bordertransparent") %>  
           <%= link_to("","/tasks/#{todo.id}/edit", class: "fas fa-pen fa-lg edit-pen") %>
           </div>
         </div>
@@ -50,7 +53,7 @@
       
 
     <div class="todo-list-box">
-        <% if @todo_done.blank?%>
+        <% if @todo_done.size == 0%>
           <% m = 1 %>
         <% else %>
           <h2>完了済み</h2>
@@ -68,13 +71,19 @@
                 </div>
               </div>
               <div class="sub-cont">
-              <% if todo.fighted?(session[:user_id]) %>
-                <%= link_to("#{Fight.where(to_do_id: todo.id).size}","/tasks/#{todo.id}/fight/#{Fight.find_by(user_id: session[:user_id], to_do_id: todo.id).id}", class: "fas_button_border_after") %>
-              <% else %>
-                <%= link_to("#{Fight.where(to_do_id: todo.id).size}","/tasks/#{todo.id}/fight", class: "fas_button_border") %>
+              <% todo.fights.each do |fight, n| %>
+                <% if fight.user_id == session[:user_id] %>
+                  <%= link_to("#{todo.fight}","/tasks/#{todo.id}/fight/#{fight.id}", class: "fas_button_border_after") %>
+                  <% break %> 
+                <% end %>
+                <% if n == todo.fights.size - 1 %>
+                  <%= link_to("#{todo.fight}","/tasks/#{todo.id}/fight", class: "fas_button_border") %>
+                <% end %>
               <% end %>
-  
-              <%= link_to("#{Comment.where(to_do_id: todo.id).size}", "/tasks/#{todo.id}/comment/new", class: "fas_header_bordertransparent") %>
+              <% if todo.fights.size == 0 %>
+                <%= link_to("#{todo.fight}","/tasks/#{todo.id}/fight", class: "fas_button_border") %>
+              <% end %>
+              <%= link_to("#{todo.comment}", "/tasks/#{todo.id}/comment/new", class: "fas_header_bordertransparent") %>
 
               <%= link_to("","/tasks/#{todo.id}/edit", class: "fas fa-pen fa-lg edit-pen") %>
               </div>
@@ -84,26 +93,32 @@
       </div>
 
       <div class="todo-list-box">
-        <% if @todo_fight.blank?%>
+        <% if @todo_fight.size == 0%>
           <% m = 1 %>
         <% else %>
         <h2>応援タスク</h2>
           <% @todo_fight.each do |todo| %>
             <div class="fight-todo-box">
             <%= link_to "/tasks/#{todo.id}/comment",class: "comment-link" do %> 
-            <h2><%= User.find(todo.user_id).name %></h2>
-            <p class="todo-text"><%= todo.text %></p>
-            <p class="todo-date"><%= todo.limit_date %></p>
-            <% if todo.fighted?(session[:user_id]) %>
-              <%= link_to("#{Fight.where(to_do_id: todo.id).size}","/tasks/#{todo.id}/fight/#{Fight.find_by(user_id: session[:user_id], to_do_id: todo.id).id}", class: "fas_button_border_after") %>
-            <% else %>
-              <%= link_to("#{Fight.where(to_do_id: todo.id).size}","/tasks/#{todo.id}/fight", class: "fas_button_border") %>
-            <% end %>
-
-            <%= link_to("#{Comment.where(to_do_id: todo.id).size}", "/tasks/#{todo.id}/comment/new", class: "fas_header_bordertransparent") %>
+              <h2><%= todo.user.name %></h2>
+              <p class="todo-text"><%= todo.to_do.text %></p>
+              <p class="todo-date"><%= todo.to_do.limit_date %></p>
+              <% @todo_fight.each do |fight, n| %>
+                <% if fight.user_id == session[:user_id] %>
+                  <%= link_to("#{todo.to_do.fight}","/tasks/#{todo.to_do.id}/fight/#{fight.id}", class: "fas_button_border_after") %>
+                  <% break %> 
+                <% end %>
+                <% if n == todo.fights.size - 1 %>
+                  <%= link_to("#{todo.to_do.fight}","/tasks/#{todo.to_do.id}/fight", class: "fas_button_border") %>
+                <% end %>
+              <% end %>
+              <% if todo.to_do.fight == 0 %>
+                <%= link_to("#{todo.to_do.fight}","/tasks/#{todo.to_do.id}/fight", class: "fas_button_border") %>
+              <% end %>
+              <%= link_to("#{todo.to_do.comment}", "/tasks/#{todo.to_do.id}/comment/new", class: "fas_header_bordertransparent") %>
             <% end %>
             </div>
-            <% end %>    
+          <% end %>    
         <% end %>
       </div>
         

@@ -1,13 +1,10 @@
 class TasksController < ApplicationController
   def index
-    @todo = ToDo.where(user_id: session[:user_id], done: false).order(limit_date: "ASC")
-    @todo_done = ToDo.where(user_id: session[:user_id], done: true).order(limit_date: "DESC")
+    @todo = ToDo.where(user_id: session[:user_id], done: false).includes(:fights, :comments).order(limit_date: "ASC")
+    @todo_done = ToDo.where(user_id: session[:user_id], done: true).includes(:fights, :comments).order(limit_date: "DESC")
 
-    @todo_fight = []
-    fight = Fight.where(user_id: session[:user_id]).order(create_at: "DESC")
-    fight.length.times do |i|
-      @todo_fight[i] = ToDo.find(fight[i].to_do_id)
-    end
+    
+    @todo_fight = Fight.where(user_id: session[:user_id]).includes(:user, :to_do).order(create_at: "DESC")
   end
 
   def show
