@@ -97,25 +97,25 @@
           <% m = 1 %>
         <% else %>
         <h2>応援タスク</h2>
-          <% @todo_fight.each do |todo| %>
+          <% @todo_fight.each do |fight| %>
             <div class="fight-todo-box">
-            <%= link_to "/tasks/#{todo.id}/comment",class: "comment-link" do %> 
-              <h2><%= todo.user.name %></h2>
-              <p class="todo-text"><%= todo.to_do.text %></p>
-              <p class="todo-date"><%= todo.to_do.limit_date %></p>
-              <% @todo_fight.each do |fight, n| %>
-                <% if fight.user_id == session[:user_id] %>
-                  <%= link_to("#{todo.to_do.fight}","/tasks/#{todo.to_do.id}/fight/#{fight.id}", class: "fas_button_border_after") %>
+            <%= link_to "/tasks/#{fight.to_do.id}/comment",class: "comment-link" do %> 
+              <h2><%= fight.user.name %></h2>
+              <p class="todo-text"><%= fight.to_do.text %></p>
+              <p class="todo-date"><%= fight.to_do.limit_date %></p>
+              <% @todo_fight.each do |f, n| %>
+                <% if f.user_id == session[:user_id] %>
+                  <%= link_to("#{fight.to_do.fight}","/tasks/#{fight.to_do.id}/fight/#{f.id}", class: "fas_button_border_after") %>
                   <% break %> 
                 <% end %>
                 <% if n == todo.fights.size - 1 %>
                   <%= link_to("#{todo.to_do.fight}","/tasks/#{todo.to_do.id}/fight", class: "fas_button_border") %>
                 <% end %>
               <% end %>
-              <% if todo.to_do.fight == 0 %>
-                <%= link_to("#{todo.to_do.fight}","/tasks/#{todo.to_do.id}/fight", class: "fas_button_border") %>
+              <% if fight.to_do.fight == 0 %>
+                <%= link_to("#{fight.to_do.f}","/tasks/#{fight.to_do.id}/fight", class: "fas_button_border") %>
               <% end %>
-              <%= link_to("#{todo.to_do.comment}", "/tasks/#{todo.to_do.id}/comment/new", class: "fas_header_bordertransparent") %>
+              <%= link_to("#{fight.to_do.comment}", "/tasks/#{fight.to_do.id}/comment/new", class: "fas_header_bordertransparent") %>
             <% end %>
             </div>
           <% end %>    
