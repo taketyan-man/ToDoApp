@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   get '/tasks/:to_do_id/comment/:id/report' => 'comments#report'
   get '/tasks/:to_do_id/comment'  => 'comments#show'
   get '/tasks/:to_do_id/comment/new' => 'comments#new'

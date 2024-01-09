@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_08_143349) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_08_160054) do
   create_table "comments", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "to_do_id", null: false
@@ -35,8 +35,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_08_143349) do
     t.integer "to_do_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
     t.index ["comment_id"], name: "index_reports_on_comment_id"
     t.index ["to_do_id"], name: "index_reports_on_to_do_id"
+    t.index ["user_id"], name: "index_reports_on_user_id"
   end
 
   create_table "to_dos", force: :cascade do |t|
@@ -65,5 +67,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_08_143349) do
   add_foreign_key "fights", "users"
   add_foreign_key "reports", "comments"
   add_foreign_key "reports", "to_dos"
+  add_foreign_key "reports", "users"
   add_foreign_key "to_dos", "users"
 end

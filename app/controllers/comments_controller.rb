@@ -67,8 +67,18 @@ class CommentsController < ApplicationController
 
   def report
     @comment = Comment.find(params[:id])
-    flash[:notice] = "そのコメントを報告しました。"
-    redirect_to("/tasks/#{@comment.to_do_id}/comment")
+    @report = Report.new(
+      user_id: session[:user_id],
+      to_do_id: @comment.to_do_id,
+      comment_id: @comment.id
+    )
+    if @report.save!
+      flash[:notice] = "そのコメントを報告しました。"
+      redirect_to("/tasks/#{@comment.to_do_id}/comment")
+    else
+      flash[:attention] = "報告に失敗しました。"
+      redirect_to("/tasks/#{@comment.to_do_id}/comment")
+    end
   end
 
 end
