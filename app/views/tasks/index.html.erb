@@ -11,10 +11,9 @@
   </div> 
   <div class="todo-body">
     <div class="todo-list-box todo-index-active">
-      <% if @todo.size == 0 %>
-        <%= link_to("ToDoを追加しよう", "/tasks/new", class: "list-text") %>
-      <% else %>
-        <h2>未完タスク</h2>
+    <h2>未完タスク</h2>
+    <%= link_to("ToDoを追加しよう", "/tasks/new", class: "list-text") %>
+    <div class="todo-box">
         <% @todo.each do |todo| %>
           <div class="todo-list <%= 'todo-list-out' if todo.limit_date <= Date.today %>">
           <div class="list-grid">
@@ -46,8 +45,8 @@
           <%= link_to("","/tasks/#{todo.id}/edit", class: "fas fa-pen fa-lg edit-pen") %>
           </div>
         </div>
-      <% end %>   
       <% end %>
+    </div>   
     </div>
         
       
@@ -100,7 +99,7 @@
           <% @todo_fight.each do |fight| %>
             <div class="fight-todo-box">
             <%= link_to "/tasks/#{fight.to_do.id}/comment",class: "comment-link" do %> 
-              <h2><%= fight.user.name %></h2>
+              <h2><%= fight.to_do.user.name %></h2>
               <p class="todo-text"><%= fight.to_do.text %></p>
               <p class="todo-date"><%= fight.to_do.limit_date %></p>
               <% @todo_fight.each do |f, n| %>

@@ -43,6 +43,10 @@
   padding: 40px 0 12px;
 }
 
+.todo-box {
+  margin-top: 16px;
+}
+
 .list-grid{
   display: grid;
   padding-bottom: 8px;
@@ -58,6 +62,7 @@
   padding: 8px;
   background-color: #3ecdc6;
   border-radius: 24px;
+  margin-bottom: 32px;
 }
 
 .todo-list-text {
