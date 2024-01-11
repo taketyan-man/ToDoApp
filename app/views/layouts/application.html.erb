@@ -14,8 +14,12 @@
   <body>
     <div class="header">
       <div class="header-title">
+      <% if session[:user_id] %>
+        <%= link_to("ToDoアプリ", "/tasks", class:"userList") %>
+      <% else %>
         <%= link_to("ToDoアプリ", "/", class:"userList") %>
-        <div class="header-con">
+      <% end %>
+      <div class="header-con">
         <% if session[:user_id]  %>
           <ul>
             <li>
