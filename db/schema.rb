@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_08_160054) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_11_130943) do
   create_table "comments", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "to_do_id", null: false
@@ -50,6 +50,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_08_160054) do
     t.boolean "done"
     t.integer "fight"
     t.integer "comment"
+    t.boolean "public"
     t.index ["user_id"], name: "index_to_dos_on_user_id"
   end
 
@@ -59,6 +60,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_08_160054) do
     t.string "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "public"
   end
 
   add_foreign_key "comments", "to_dos"

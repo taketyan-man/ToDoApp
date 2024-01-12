@@ -8,11 +8,17 @@ class UsersController < ApplicationController
   end
 
   def create
+    
     @user = User.new(
       name: params[:name],
       email: params[:email],
       password: params[:password]
     )
+    if params[:public] == "true"
+      @user.public = true
+    elsif params[:public] == "false"
+      @user.public = false
+    end
     if @user.save
       session[:user_id] = @user.id
       flash[:notice] = "ユーザー登録成功しました"

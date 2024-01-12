@@ -16,6 +16,10 @@
         <input name="email" value="<%= @user.email %>">
         <p>パスワード</p>
         <input type="password" name="password" value="<%= @user.password %>"></br>
+        <div class="form-public-box">
+          <input type="radio" id="public" name="public" value="true" class="public-radio" checked="checked"><label for="public" class="radio-label">公開</label>
+          <input type="radio" id="notpublic" name="public" value="false" class="public-radio public-radio2"><label for="notpublic">非公開</label>
+        </div>
         <div class="submit-button">
           <input type="submit" value="新規登録">
         </div>

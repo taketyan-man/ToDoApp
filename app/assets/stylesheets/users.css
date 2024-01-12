@@ -72,3 +72,21 @@ input[type="submit"] {
 .userEdit {
   padding-top: 8px;
 }
+
+.form-public-box {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.public-radio {
+  width: auto;
+}
+
+.radio-label {
+  margin-right: 40px;
+}
+
+.public-radio2{
+  margin-left: 40px;
+}

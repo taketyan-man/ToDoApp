@@ -16,16 +16,19 @@
           <h2><%= todo.user.name %></h2>
           <p class="todo-text"><%= todo.text %></p>
           <p class="todo-date"><%= todo.limit_date %></p>
-          <% todo.fights.each do |fight, n| %>
+          <% if todo.fight > 0 %>
+
+          <% todo.fights.each_with_index do |fight, i| %>
+            
             <% if fight.user_id == session[:user_id] %>
               <%= link_to("#{todo.fight}","/tasks/#{todo.id}/fight/#{fight.id}", class: "fas_button_border_after") %>
               <% break %> 
             <% end %>
-            <% if n == todo.fights.size - 1 %>
+            <% if i == todo.fight - 1 %>
               <%= link_to("#{todo.fight}","/tasks/#{todo.id}/fight", class: "fas_button_border") %>
             <% end %>
           <% end %>
-          <% if todo.fights.size == 0 %>
+          <% elsif todo.fight == 0 %>
             <%= link_to("#{todo.fight}","/tasks/#{todo.id}/fight", class: "fas_button_border") %>
           <% end %>
           <%= link_to("#{todo.comment}", "/tasks/#{todo.id}/comment/new", class: "fas_header_bordertransparent") %>
@@ -41,7 +44,7 @@
           <h2><%= todo.user.name %></h2>
           <p class="todo-text"><%= todo.text %></p>
           <p class="todo-date"><%= todo.limit_date %></p>
-          <% todo.fights.each do |fight, n| %>
+          <% todo.fights.each_with_index do |fight, n| %>
             <% if fight.user_id == session[:user_id] %>
               <%= link_to("#{todo.fight}","/tasks/#{todo.id}/fight/#{fight.id}", class: "fas_button_border_after") %>
               <% break %> 
