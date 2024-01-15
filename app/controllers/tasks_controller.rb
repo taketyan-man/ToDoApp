@@ -8,8 +8,8 @@ class TasksController < ApplicationController
   end
 
   def show
-    @todo = ToDo.includes(:user, :fights).order(id: "DESC")
-    @todo_fight = ToDo.includes(:user, :fights).order(fight: "DESC")
+    @todo = ToDo.where(public: true).includes(:user, :fights).order(id: "DESC")
+    @todo_fight = ToDo.where(public: true).includes(:user, :fights).order(fight: "DESC")
   end
 
   def yourshow
@@ -29,6 +29,12 @@ class TasksController < ApplicationController
       fight: 0,
       comment: 0
     )
+    @user = User.find(session[:user_id])
+    if @user.public
+      @todo.public = true
+    else
+      @todo.public = false
+    end
     if @todo[:limit_date].nil?
       flash[:attention] = "リミット日時を正しく入力してください"
       render:new, status: :unprocessable_entity
