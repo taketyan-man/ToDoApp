@@ -15,7 +15,7 @@
     <div class="header">
       <div class="header-title">
       <% if session[:user_id] %>
-        <%= link_to("ToDoアプリ", "/tasks", class:"userList") %>
+        <%= link_to("ToDoアプリ", "/tasks", class:"userList title") %>
       <% else %>
         <%= link_to("ToDoアプリ", "/", class:"userList") %>
       <% end %>
@@ -23,19 +23,33 @@
         <% if session[:user_id]  %>
           <ul>
             <li>
-              <%= link_to("#{User.find(session[:user_id]).name }", "/user/show/#{session[:user_id]}", class:"userList") %>
+              <a class="fas fa-bell userList"></a>
             </li>
             <li>
-              <%= link_to("追加", "/tasks/new", class:"userList") %>
+              
+              <%= link_to("", "/tasks/list", class:"userList fas fa-home ") %>
             </li>
             <li>
-              <%= link_to("リスト", "/tasks", class:"userList") %>
+              <a class="userList fas fa-user"></a>
+              <div class="home-user-box">
+                <ul class="home-user-ul">
+                  <li class="home-user-li">
+                    <%= link_to('ToDoリスト', '/tasks', class:"homeUserList") %>
+                  </li>
+                  <li class="home-user-li">
+                    <%= link_to('ユーザ詳細', "/user/show/#{session[:user_id]}", class:"homeUserList") %>
+                  </li>
+                  <li class="home-user-li">
+                    <%= link_to('ユーザ編集', "/user/#{session[:user_id]}/edit", class:"homeUserList") %>
+                  </li>
+                  <li class="home-user-li">
+                    <%= link_to('ログアウト', '/user/logout', class:"homeUserList") %>
+                  </li>
+                </ul>
+              </div>
             </li>
             <li>
-              <%= link_to("一覧", "/tasks/list", class:"userList") %>
-            </li>
-            <li>
-              <%= link_to("ログアウト", "/user/logout", class:"userList") %>
+              <%= link_to("追加する", "/tasks/new", class:"userList taskAdd") %>
             </li>
           </ul>
         <% else %>
