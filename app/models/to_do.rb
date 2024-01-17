@@ -2,6 +2,7 @@ class ToDo < ApplicationRecord
   has_many :fights, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :reports, dependent: :destroy
+  has_many :notices, dependent: :destroy
   belongs_to :user
 
   validates :public, inclusion: { in: [true, false] }

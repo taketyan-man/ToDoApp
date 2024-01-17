@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_15_114108) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_16_114106) do
   create_table "comments", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "to_do_id", null: false
@@ -31,15 +31,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_15_114108) do
   end
 
   create_table "notices", force: :cascade do |t|
-    t.integer "receivor_id_id"
-    t.integer "sendenr_id_id"
+    t.integer "receivor_id"
+    t.integer "sendenr_id"
     t.integer "action"
     t.integer "action_id"
     t.boolean "checked"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["receivor_id_id"], name: "index_notices_on_receivor_id_id"
-    t.index ["sendenr_id_id"], name: "index_notices_on_sendenr_id_id"
+    t.index ["receivor_id"], name: "index_notices_on_receivor_id"
+    t.index ["sendenr_id"], name: "index_notices_on_sendenr_id"
   end
 
   create_table "reports", force: :cascade do |t|
@@ -79,8 +79,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_15_114108) do
   add_foreign_key "comments", "users"
   add_foreign_key "fights", "to_dos"
   add_foreign_key "fights", "users"
-  add_foreign_key "notices", "users", column: "receivor_id_id"
-  add_foreign_key "notices", "users", column: "sendenr_id_id"
+  add_foreign_key "notices", "users", column: "receivor_id"
+  add_foreign_key "notices", "users", column: "sendenr_id"
   add_foreign_key "reports", "comments"
   add_foreign_key "reports", "to_dos"
   add_foreign_key "reports", "users"
