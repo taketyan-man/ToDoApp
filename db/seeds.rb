@@ -5,3 +5,4 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+  a = Notice.create(receivor_id: 1, sendenr_id: 2, action: 1, action_id: 3, checked: false) 

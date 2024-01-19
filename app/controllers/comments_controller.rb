@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
       @todo = ToDo.find(params[:to_do_id])
       @todo.comment += 1
       @todo.save
-      redirect_to("/tasks/#{@comment.to_do_id}/comment")
+      redirect_to controller: 
     else
       flash[:attention] = "何か入力ミスをしています
       。確認してください。"
