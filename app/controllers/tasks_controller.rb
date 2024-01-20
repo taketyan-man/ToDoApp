@@ -59,7 +59,11 @@ class TasksController < ApplicationController
     @todo = ToDo.find(params[:id])
     @todo.text = params[:text]
     @todo.limit_date = params[:date]
-    
+    if params[:public] == "true"
+      @todo.public = true
+    elsif params[:public] == "false"
+      @todo.public = false
+    end
     if @todo[:limit_date].nil?
       flash[:attention] = "リミット日時を正しく入力してください"
       render:edit, status: :unprocessable_entity
