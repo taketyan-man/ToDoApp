@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
         action: 1, 
         action_id: data.id, 
         checked: false
-      ) 
+      )
       @notice.save!
     end 
   end

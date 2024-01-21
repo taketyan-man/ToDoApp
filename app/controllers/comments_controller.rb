@@ -22,7 +22,8 @@ class CommentsController < ApplicationController
       @todo = ToDo.find(params[:to_do_id])
       @todo.comment += 1
       @todo.save
-      redirect_to controller: "notices", action: "create(@comment, comment)", id: 8
+      notice_create_comment(@comment)
+      redirect_to("/tasks/#{@comment.to_do_id}/comment")
     else
       flash[:attention] = "何か入力ミスをしています
       。確認してください。"
@@ -80,5 +81,25 @@ class CommentsController < ApplicationController
       redirect_to("/tasks/#{@comment.to_do_id}/comment")
     end
   end
+
+private
+  def notice_create_comment(data)
+    @notice = Notice.new(
+        receivor_id: ToDo.find(data.to_do_id).user_id,
+        sendenr_id: data.user_id, 
+        action: 1, 
+        action_id: data.id, 
+        checked: false
+      )
+      if @notice.save!
+        flash[:notice] = "通知機能成功"
+      else
+        flash[:attention] = "#{@notice}"
+      end
+  end
+
+  def notice_delete_comment
+  end
+
 
 end

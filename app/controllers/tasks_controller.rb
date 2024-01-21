@@ -101,5 +101,4 @@ class TasksController < ApplicationController
     @user = User.find(params[:id])
     @todos = Todo,where(user_id: params[:id])
   end
-
 end
