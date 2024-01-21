@@ -59,6 +59,7 @@ class CommentsController < ApplicationController
       @todo = ToDo.find(params[:to_do_id])
       @todo.comment -= 1
       @todo.save
+      notice_delete_comment(@comment)
       redirect_to("/tasks/#{@comment.to_do_id}/comment")
     else
       flash[:attention] = "あなたにはその権限がありません。"
@@ -86,19 +87,29 @@ private
   def notice_create_comment(data)
     @notice = Notice.new(
         receivor_id: ToDo.find(data.to_do_id).user_id,
-        sendenr_id: data.user_id, 
+        sender_id: data.user_id, 
+        to_do_id: data.to_do_id,
         action: 1, 
         action_id: data.id, 
         checked: false
       )
-      if @notice.save!
-        flash[:notice] = "通知機能成功"
-      else
-        flash[:attention] = "#{@notice}"
-      end
+    @notice.save!
   end
 
-  def notice_delete_comment
+  def notice_delete_comment(data)
+    @notice = Notice.new(
+      receivor_id: ToDo.find(data.to_do_id).user_id,
+      sender_id: data.user_id,
+      to_do_id: data.to_do_id, 
+      action: 2, 
+      action_id: data.id, 
+    )
+    if @notice.receivor_id == @notice.sender_id
+      @notice.checked = true
+    else
+      @notice.checked = false
+    end
+    @notice.save!
   end
 
 
