@@ -90,9 +90,13 @@ private
         sender_id: data.user_id, 
         to_do_id: data.to_do_id,
         action: 1, 
-        action_id: data.id, 
-        checked: false
+        action_id: data.id
       )
+      if @notice.receivor_id == @notice.sender_id
+        @notice.checked = true
+      else
+        @notice.checked = false
+      end
     @notice.save!
   end
 
@@ -102,7 +106,7 @@ private
       sender_id: data.user_id,
       to_do_id: data.to_do_id, 
       action: 2, 
-      action_id: data.id, 
+      action_id: data.id 
     )
     if @notice.receivor_id == @notice.sender_id
       @notice.checked = true

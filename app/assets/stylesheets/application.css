@@ -98,13 +98,17 @@ li {
   border: #2d3133 solid 2px;
 }
 
+.home-user-alert {
+  z-index: 20;
+}
+
 .home-user-box {
   border: black solid 2px;
   border-radius: 20px;
   background-color: white;
   width: 180px;
   position: absolute;
-  z-index: 2;
+  z-index: 20;
   right: 8%;
   display: none;
 }

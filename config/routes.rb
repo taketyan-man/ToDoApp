@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  post '/notice/:id' => 'notices#create'
+  get '/tasks/notice/:id/checked' => 'notices#checked'
 
   get '/tasks/:to_do_id/comment/:id/report' => 'comments#report'
   get '/tasks/:to_do_id/comment'  => 'comments#show'

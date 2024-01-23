@@ -28,7 +28,7 @@ class FightsController < ApplicationController
       sender_id: session[:user_id], 
       to_do_id: params[:to_do_id],
       action: 0, 
-      action_id: data.id, 
+      action_id: data.id
     )
      # 自分投稿にいいねしたときの対処
     if @notice.receivor_id == @notice.sender_id

@@ -25,6 +25,25 @@
             <li>
               <a class="fas fa-bell userList"></a>
               <div class="home-user-alert">
+                <ul>
+                  <% if not @notices.blank? %>
+                    <% @notices.each do |notice| %>
+                      <%= link_to "/tasks/notice/#{notice.id}/checked" do %> 
+                      <li>
+                        <% if notice.action == 0 %>
+                          <p>あなたの投稿が応援されました。</p>
+                          <p><%= notice.to_do_id.text %></p>
+                        <% elsif notice.action == 1 %>
+                          <p>あなたの投稿にコメントされました。</p>
+                          <p><%= Comment.find(notice.action_id).text %></p>
+                        <% elsif notice.action == 2 %>
+                          <p>あなたのコメントがポリシー違反のため削除されました。</p>
+                        <% end %>
+                      </li>
+                      <% end %>
+                    <% end %>
+                  <% end %>
+                </ul>
               </div>
             </li>
             <li> 
