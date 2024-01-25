@@ -108,6 +108,7 @@ private
       action: 2, 
       action_id: data.id 
     )
+    notice_comment = Notice.where(action: 1, action_id: data.id).delete_all
     if @notice.receivor_id == @notice.sender_id
       @notice.checked = true
     else

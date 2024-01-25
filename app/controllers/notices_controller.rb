@@ -7,5 +7,6 @@ class NoticesController < ApplicationController
     else
       flash[:attention] = ["問題が発生しております。", "少々お時間を置いてから確認してください。"]
       redirect_to("/")
+    end
   end
 end
