@@ -107,6 +107,7 @@ li {
   position: absolute;
   z-index: 20;
   right: 15%;
+  display: none;
 }
 
 .home-user-box {

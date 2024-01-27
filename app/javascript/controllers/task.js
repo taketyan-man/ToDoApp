@@ -22,6 +22,20 @@ $(function (){
       $('.home-user-box').removeClass('box-active');
     } else {
       $('.home-user-box').addClass('box-active');
-    }
+      if($('.home-user-alert').hasClass('box-active')) {
+        $('.home-user-alert').removeClass('box-active');
+      }
+    };
+  })
+
+  $('.fa-bell').on('click', function() {
+    if($('.home-user-alert').hasClass('box-active')) {
+      $('.home-user-alert').removeClass('box-active');
+    } else {
+      $('.home-user-alert').addClass('box-active');
+      if($('.home-user-box').hasClass('box-active')) {
+        $('.home-user-box').removeClass('box-active');
+      }
+    };
   })
 });
