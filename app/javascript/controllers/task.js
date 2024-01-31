@@ -28,6 +28,7 @@ $(function (){
     };
   })
 
+  
   $('.fa-bell').on('click', function() {
     if($('.home-user-alert').hasClass('box-active')) {
       $('.home-user-alert').removeClass('box-active');
