@@ -24,8 +24,7 @@ class UsersController < ApplicationController
       flash[:notice] = "ユーザー登録成功しました"
       redirect_to tasks_path
     else
-      
-      render :new
+      redirect_to user_new_path, flash: { error: @user.errors.full_messages }
     end
   end
 
@@ -66,7 +65,7 @@ class UsersController < ApplicationController
       flash[:notice] = "編集が完了しました"
       redirect_to("/tasks/list")
     else
-      render:edit, status: :unprocessable_entity
+      render action: "edit"
     end
   end
 

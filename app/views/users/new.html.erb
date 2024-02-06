@@ -2,13 +2,14 @@
   <div class="user-header">
     <h1>新規登録</h1>
     <div class="user_main">
-        </div>
-      <% @user.errors.full_messages.each do |message| %>
+    </div>
+    <% if flash[:error].present? %>
+      <% flash[:error].each do |message| %>
         <div class="form-error">
           <%= message %>
         </div>
       <% end %>
-
+    <% end %>
       <%= form_tag("/user/create") do %>
         <p>ユーザー名(10文字以内)</p>
         <input name="name" value="<%= @user.name %>">
