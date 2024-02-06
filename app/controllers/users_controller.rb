@@ -65,7 +65,7 @@ class UsersController < ApplicationController
       flash[:notice] = "編集が完了しました"
       redirect_to("/tasks/list")
     else
-      render action: "edit"
+      redirect_to "/user/#{@user.id}/edit", flash: { error: @user.errors.full_messages }
     end
   end
 

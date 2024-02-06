@@ -10,5 +10,5 @@ class User < ApplicationRecord
   validates :name, uniqueness: {message: "がすでに使われています"}
   validates :email, presence: {message: "を入力してください"}
   validates :password, presence: {message: "を入力してください"}
-  validates :public,  inclusion: { in: [true, false] }
+  validates :public, inclusion: { in: [true, false] }
 end

@@ -2,12 +2,13 @@
   <div class="user-header">
     <h1>編集画面</h1>
     <div class="user_main">
-      <% @user.errors.full_messages.each do |message| %>
+    <% if flash[:error].present? %>
+      <% flash[:error].each do |message| %>
         <div class="form-error">
           <%= message %>
         </div>
       <% end %>
-
+    <% end %>
       <%= form_tag("/user/#{@user.id}/update") do %>
         <p>ユーザー名</p>
         <input name="name" value="<%= @user.name %>">
