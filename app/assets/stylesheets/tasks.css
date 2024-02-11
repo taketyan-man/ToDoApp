@@ -3,6 +3,12 @@
   padding: 20px;
 }
 
+.todo_main {
+  padding-top: 28px;
+  background-color: rgb(253, 244, 234);
+  padding-bottom: 12px;
+}
+
 /* index.html.erbのレイアウト */
 .tab-list {
   display: flex;

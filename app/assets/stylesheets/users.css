@@ -10,6 +10,12 @@
   padding-top: 20px;
 }
 
+.user_main {
+  background-color: rgb(253, 244, 234);
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
 p {
   padding: 0;
   margin: 0;

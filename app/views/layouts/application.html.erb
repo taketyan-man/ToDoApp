@@ -20,15 +20,19 @@
         <%= link_to("ToDoアプリ", "/", class:"userList") %>
       <% end %>
       <div class="header-con">
-        <% if session[:user_id]  %>
+        <% if session[:user_id] %>
           <ul>
             <li>
               <a class="fas fa-bell userList"></a>
-              <div class="home-user-alert">
-                <% notices_create %>
-                <% if @notices.blank? %>
-                <p>こんにちは</p> 
-                <% else %> 
+              <% notices_create %>
+              <% if @notices.blank? %>
+                <div class="home-user-alert">
+                  <p style="padding-left: 20px;">お知らせはありません</p>
+                </div>
+              <% else %> 
+                <div class="for-alert">
+                </div>
+                <div class="home-user-alert">
                   <ul class="notice-ul">
                     <% @notices.each do |notice| %>
                       <%= link_to "/tasks/notice/#{notice.id}/checked" do %> 
@@ -46,8 +50,8 @@
                       <% end %>
                     <% end %>
                   </ul>
-                <% end %>
-              </div>
+                </div>
+              <% end %>
             </li>
             <li> 
               <%= link_to("", "/tasks/list", class:"userList fas fa-home ") %>
@@ -98,6 +102,11 @@
         <%= flash[:attention] %>
       </div>
     <% end %>
-    <%= yield %>
+    <div class="main">
+      <%= yield %>
+    </div>
+      <div class="arrow-box">
+        <i class="fas fa-arrow-up"></i>
+      </div>
   </body>
 </html>

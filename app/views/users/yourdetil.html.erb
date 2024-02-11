@@ -1,23 +1,22 @@
 <div class="user">
   <div class="user-header">
     <h1>ログイン</h1>
-    <div class="user_main">
-        </div>
-      <% @user.errors.full_messages.each do |message| %>
-        <div class="form-error">
-          <%= message %>
-        </div>
-      <% end %>
+  </div>
+  <div class="user_main">
+    <% @user.errors.full_messages.each do |message| %>
+      <div class="form-error">
+        <%= message %>
+      </div>
+    <% end %>
 
-      <%= form_tag("/user/login") do %>
-        <p>ユーザー名</p>
-        <input name="name" value="<%= @user.name %>">
-        <p>パスワード</p>
-        <input type="password" name="password" value="<%= @user.password %>"></br>
-        <div class="submit-button">
-          <input type="submit" value="ログイン">
-        </div>
-      <% end %>
-    </div>
+    <%= form_tag("/user/login") do %>
+      <p>ユーザー名</p>
+      <input name="name" value="<%= @user.name %>">
+      <p>パスワード</p>
+      <input type="password" name="password" value="<%= @user.password %>"></br>
+      <div class="submit-button">
+        <input type="submit" value="ログイン">
+      </div>
+    <% end %>
   </div>
 </div>
