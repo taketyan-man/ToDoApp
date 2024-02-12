@@ -1,5 +1,16 @@
 import jquery from "jquery";
 window.$ = jquery;
+$(window).on('scroll', function() {
+  
+  var pos = $(window).scrollTop();
+  if (50 < pos) {
+    $('.arrow-box').fadeIn('');
+  }
+  else {
+    $('.arrow-box').fadeOut('');
+  }
+});
+
 $(function (){
   $('.tab').on('click', function() {
     $('.tab-active').removeClass('tab-active');
