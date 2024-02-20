@@ -96,3 +96,25 @@ input[type="submit"] {
 .public-radio2{
   margin-left: 40px;
 }
+
+/* show.html.erb レイアウト */
+.user_body {
+  background-color: rgba(141, 141, 141, 0.25);
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.userEdit {
+  background-color: #3ecdc6;
+  border-radius: 40px;
+  border: solid black 2px;
+  margin: auto;
+  width: 120px;
+}
+
+.userEditList {
+  color: #ffffff;
+  text-decoration: none;
+  margin-top: 8px;
+  font-size: 24px;
+}
