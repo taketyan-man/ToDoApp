@@ -98,23 +98,68 @@ input[type="submit"] {
 }
 
 /* show.html.erb レイアウト */
-.user_body {
-  background-color: rgba(141, 141, 141, 0.25);
-  padding-top: 20px;
-  padding-bottom: 20px;
+.user-show-body {
+  background-color: bisque;
+  margin-bottom: 12px;
 }
 
-.userEdit {
-  background-color: #3ecdc6;
-  border-radius: 40px;
-  border: solid black 2px;
-  margin: auto;
-  width: 120px;
+.user-show-name {
+  margin-bottom: 4px;
+}
+
+.user-show-switch {
+  cursor: pointer;
+  background-color: bisque;
+}
+
+.cvevron-down {
+  display: none;
+}
+
+.user-show-box p {
+  padding: 0;
+  margin-bottom: 4px;
 }
 
 .userEditList {
+  background-color: #3ecdc6;
+  color: white;
+  cursor: pointer;
+  font-weight: 300;
+  width: 50%  ;
+  border-radius: 2px;
+  margin-top: 8px;
+  margin-bottom: 0;
+  margin: auto;
   color: #ffffff;
   text-decoration: none;
   margin-top: 8px;
+  font-size: 16px;
+  letter-spacing: 2px;
+  padding: 8px 25%;
+}
+
+.user_body p {
   font-size: 24px;
 }
+
+.user-show-label {
+  font-weight: bold;
+}
+
+.user-show-box {
+  display: none;
+}
+
+.chevron-up {
+  margin-top: 4px;
+}
+
+.active {
+  display: block;
+}
+
+.box-active {
+  display: block;
+}
+

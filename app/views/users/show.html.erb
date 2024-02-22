@@ -3,15 +3,15 @@
     <h1>ユーザー詳細画面</h1>
       <div class="user_body">
         <h2><%= @user.name %></h2>
-        <p>メールアドレス：<%= @user.email %></p>
-        <p>達成済タスク：<%= @todos.where(done: true).count %></p>
-        <p>未達成タスク：<%= @todos.where(done: false).count %></p>
+        <p><a class="user-show-label">メールアドレス：</a><%= @user.email %></p>
+        <p><a class="user-show-label">達成済タスク：</a><%= @todos.where(done: true).count %></p>
+        <p><a class="user-show-label">未達成タスク：</a><%= @todos.where(done: false).count %></p>
         <% if @user.public %>
           <p>公開</p>
         <% else %>
           <p>非公開</p>
         <% end %>
-        <p class="userEdit"><%= link_to("編集", "/user/#{@user.id}/edit", class:"userEditList") %></p>
+        <p class="userEdit"><%= link_to("ユーザー情報編集", "/user/#{@user.id}/edit", class:"userEditList") %></p>
       </div>
     </div>
   </div>

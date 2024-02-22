@@ -12,6 +12,8 @@ $(window).on('scroll', function() {
 });
 
 $(function (){
+  let d;
+
   $('.tab').on('click', function() {
     $('.tab-active').removeClass('tab-active');
     $(this).addClass('tab-active');
@@ -53,5 +55,16 @@ $(function (){
 
   $('.arrow-box').on('click', function() {
     $('body,html').animate({scrollTop:0}, 500, 'swing');
+  })
+
+  $('.user-show-switch ').on('click', function() {
+    if($('.user-show-box').hasClass('box-active')) {
+      $('.cvevron-down').addClass('active');
+      $('.user-show-box').removeClass('box-active');
+      
+    } else {
+      $('.cvevron-down').removeClass('active');
+      $('.user-show-box').addClass('box-active');
+    }
   })
 });

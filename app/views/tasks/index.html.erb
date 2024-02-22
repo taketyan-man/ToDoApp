@@ -1,17 +1,37 @@
 <div class="todo">
   <div class="todo-header">
     <h1>ToDoリスト</h1>
+    <div class="user-show-body">
+      <div class="user-show-switch">
+        <h2 class="user-show-name"><%= @user.name %></h2>
+        <div class="cvevron-down active"><i class="fas fa-chevron-down"></i></div>
+      </div>
+      <div class="user-show-box">
+        <p><a class="user-show-label">メールアドレス：</a><%= @user.email %></p>
+        <p><a class="user-show-label">達成済タスク：</a><%= @todo_done.count %></p>
+        <p><a class="user-show-label">未達成タスク：</a><%= @todo.count %></p>
+        <% if @user.public %>
+          <p>公開</p>
+        <% else %>
+          <p>非公開</p>
+        <% end %>
+        <%= link_to("ユーザー情報編集", "/user/#{@user.id}/edit", class:"userEditList") %>
+        <div class="chevron-up user-show-switch">
+          <i class="fas fa-chevron-up"></i>
+        </div>
+      </div>
+    </div>
     <div class="tab-list">
     <ul class="tab-con">
-    <li class="tab tab-active">未完了</li>
-    <li class="tab">完了</li>
+    <li class="tab tab-active">未達成</li>
+    <li class="tab">達成済</li>
     <li class="tab">応援</li>
     </ul>
     </div>
   </div> 
   <div class="todo-body">
     <div class="todo-list-box todo-index-active">
-    <h2>未完タスク</h2>
+    <h2>未達成タスク</h2>
     <%= link_to("ToDoを追加しよう", "/tasks/new", class: "list-text") %>
     <div class="todo-box">
         <% @todo.each do |todo| %>
@@ -55,7 +75,7 @@
         <% if @todo_done.size == 0%>
           <% m = 1 %>
         <% else %>
-          <h2>完了済み</h2>
+          <h2>達成済タスク</h2>
           <% @todo_done.each do |todo| %>
             <div class="todo-list">
               <div class="list-grid">
