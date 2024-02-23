@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_21_175405) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_22_105856) do
   create_table "comments", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "to_do_id", null: false
@@ -75,6 +75,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_21_175405) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "public"
+    t.string "user_image"
   end
 
   add_foreign_key "comments", "to_dos"

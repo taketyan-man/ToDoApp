@@ -3,6 +3,10 @@
   padding: 20px;
 }
 
+.todo-header {
+  text-align: center;
+}
+
 .todo_main {
   padding-top: 28px;
   background-color: rgb(253, 244, 234);

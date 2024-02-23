@@ -10,6 +10,8 @@
       <% end %>
     <% end %>
       <%= form_tag("/user/#{@user.id}/update") do %>
+        <p>プロフィール画像</p>
+        <%= image_tag "/user_img_file/#{@user.user_image}", class:"user-show-img center" %>
         <p>ユーザー名</p>
         <input name="name" value="<%= @user.name %>">
         <p>メールアドレス</p>

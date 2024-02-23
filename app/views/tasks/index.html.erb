@@ -1,34 +1,42 @@
-<div class="todo">
-  <div class="todo-header">
-    <h1>ToDoリスト</h1>
-    <div class="user-show-body">
-      <div class="user-show-switch">
-        <h2 class="user-show-name"><%= @user.name %></h2>
-        <div class="cvevron-down active"><i class="fas fa-chevron-down"></i></div>
-      </div>
-      <div class="user-show-box">
-        <p><a class="user-show-label">メールアドレス：</a><%= @user.email %></p>
-        <p><a class="user-show-label">達成済タスク：</a><%= @todo_done.count %></p>
-        <p><a class="user-show-label">未達成タスク：</a><%= @todo.count %></p>
-        <% if @user.public %>
-          <p>公開</p>
-        <% else %>
-          <p>非公開</p>
-        <% end %>
-        <%= link_to("ユーザー情報編集", "/user/#{@user.id}/edit", class:"userEditList") %>
-        <div class="chevron-up user-show-switch">
-          <i class="fas fa-chevron-up"></i>
+<div class="todo-header">
+  <h1>ToDoリスト</h1>
+  <div class="user-show-body">
+    <div class="user-show-switch">
+      <p class="cvevron-down active">ユーザー詳細</p>
+      <div class="cvevron-down active"><i class="fas fa-chevron-down"></i></div>
+    </div>
+    <div class="user-show-box">
+      <div class="active-grid">
+        <div class="user-show-border">
+          <%= image_tag "/user_img_file/#{@user.user_image}", class:"user-show-img"%>
+        </div>
+        <div class="user-show-text">
+          <h2 class="user-show-name"><%= @user.name %></h2>
+          <p><a class="user-show-label">メールアドレス：</a><%= @user.email %></p>
+          <p><a class="user-show-label">達成済タスク：</a><%= @todo_done.count %></p>
+          <p><a class="user-show-label">未達成タスク：</a><%= @todo.count %></p>
+          <% if @user.public %>
+            <p>公開</p>
+          <% else %>
+            <p>非公開</p>
+          <% end %>
         </div>
       </div>
-    </div>
-    <div class="tab-list">
+      <%= link_to("ユーザー情報編集", "/user/#{@user.id}/edit", class:"userEditList") %>
+      <div class="chevron-up user-show-switch">
+        <i class="fas fa-chevron-up"></i>
+      </div>
+    </div>    
+  </div>
+</div>
+<div class="todo">
+  <div class="tab-list">
     <ul class="tab-con">
-    <li class="tab tab-active">未達成</li>
-    <li class="tab">達成済</li>
-    <li class="tab">応援</li>
+      <li class="tab tab-active">未達成</li>
+      <li class="tab">達成済</li>
+      <li class="tab">応援</li>
     </ul>
-    </div>
-  </div> 
+  </div>
   <div class="todo-body">
     <div class="todo-list-box todo-index-active">
     <h2>未達成タスク</h2>
@@ -140,6 +148,7 @@
           <% end %>    
         <% end %>
       </div>
+    </div>
         
   
 </div>

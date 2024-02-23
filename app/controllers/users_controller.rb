@@ -12,7 +12,8 @@ class UsersController < ApplicationController
     @user = User.new(
       name: params[:name],
       email: params[:email],
-      password: params[:password]
+      password: params[:password],
+      user_image: 'default_user_img.png'
     )
     if params[:public] == "true"
       @user.public = true
