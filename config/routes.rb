@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get '/profile/edit' => 'profiles#edit'
+  post '/profile/update' => 'profiles#update'
+  
   get '/tasks/notice/:id/checked' => 'notices#checked'
 
   get '/tasks/:to_do_id/comment/:id/report' => 'comments#report'

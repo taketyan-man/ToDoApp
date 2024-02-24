@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :to_dos, dependent: :destroy
   has_many :reports, dependent: :destroy
   has_many :notices, dependent: :destroy
+  mount_uploader :user_image, AvatarUploader
 
   validates :name, presence: {message: "を入力してください"}
   validates :name, length: {maximum: 10, message: "は最大10文字までです"}

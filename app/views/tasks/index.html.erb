@@ -8,7 +8,7 @@
     <div class="user-show-box">
       <div class="active-grid">
         <div class="user-show-border">
-          <%= image_tag "/user_img_file/#{@user.user_image}", class:"user-show-img"%>
+          <%= image_tag "#{@user.user_image.url}", class:"user-show-img"%>
         </div>
         <div class="user-show-text">
           <h2 class="user-show-name"><%= @user.name %></h2>

@@ -47,6 +47,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.name = params[:name]
     @user.email = params[:email]
+    @user.user_image = params[:image]
     if params[:public] == "true"
       @user.public = true
       @todos = ToDo.where(user_id: params[:id], public: false)
