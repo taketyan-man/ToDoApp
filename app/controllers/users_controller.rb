@@ -12,8 +12,7 @@ class UsersController < ApplicationController
     @user = User.new(
       name: params[:name],
       email: params[:email],
-      password: params[:password],
-      user_image: 'default_user_img.png'
+      password: params[:password]
     )
     if params[:public] == "true"
       @user.public = true
@@ -47,7 +46,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user.name = params[:name]
     @user.email = params[:email]
-    @user.user_image = params[:image]
+    @user.user_image = params[:user_image]
     if params[:public] == "true"
       @user.public = true
       @todos = ToDo.where(user_id: params[:id], public: false)
@@ -64,8 +63,7 @@ class UsersController < ApplicationController
       end
     end
     if @user.save
-      flash[:notice] = "編集が完了しました"
-      redirect_to("/tasks/list")
+      redirect_to("/tasks")
     else
       redirect_to "/user/#{@user.id}/edit", flash: { error: @user.errors.full_messages }
     end

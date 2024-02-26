@@ -9,28 +9,31 @@
         </div>
       <% end %>
     <% end %>
-      <%= form_tag("/user/#{@user.id}/update") do %>
-        <p>プロフィール画像</p>
-        <%= image_tag "/user_img_file/#{@user.user_image}", class:"user-show-img center input-file " %>
-        <input type="file" name="image" accept="image/jpeg, image/png">
-        <p>ユーザー名</p>
-        <input name="name" value="<%= @user.name %>">
-        <p>メールアドレス</p>
-        <input name="email" value="<%= @user.email %>"><br>
+      <%= form_with(url: "/user/#{@user.id}/update") do |f|%>
+        <%= f.label :user_image, 'プロフィール画像' %>
+        <%= f.file_field :user_image, name: 'user_image', class:'form-control' %> 
+        <%= f.hidden_field :user_image_cache %>
+        <%= f.label :name, 'ユーザー名' %>
+        <%= f.text_field :name, name: 'name', value: @user.name %>
+        <%= f.label :email, 'メールアドレス' %>
+        <%= f.text_field :email, name: 'email', value: @user.email%>
         <% if @user.public %>
-        
           <div class="form-public-box">
-            <input type="radio" id="public" name="public" value="true" class="public-radio" checked="checked"><label for="public" class="radio-label">公開</label>
-            <input type="radio" id="notpublic" name="public" value="false" class="public-radio public-radio2"><label for="notpublic">非公開</label>
+            <%= f.radio_button :public, "true", id: "public", checked: "checked", value: "true", class: "public-radio", name: 'public' %>
+            <%= f.label :public, "公開" %>
+            <%= f.radio_button :notpublic, "false", id: "notpublic", name: "public", value: "false", class: "public-radio public-radio2" %>
+            <%= f.label :public, "非公開" %>
           </div>
         <% else %>
           <div class="form-public-box">
-            <input type="radio" id="public" name="public" value="true" class="public-radio"><label for="public" class="radio-label">公開</label>
-            <input type="radio" id="notpublic" name="public" value="false" class="public-radio public-radio2" checked="checked"><label for="notpublic">非公開</label>
+            <%= f.radio_button :public, "true", id: "public", value: "true", class: "public-radio", name: "public" %>
+            <%= f.label :public, "公開" %>
+            <%= f.radio_button :notpublic, "false", id: "notpublic", name: "public", checked: "checked", value: "false", class: "public-radio public-radio2" %>
+            <%= f.label :public, "非公開" %>
           </div>
         <% end %>
         <div class="submit-button">
-          <input type="submit" value="編集">
+          <%= f.submit value: "編集" %>
         </div>
       <% end %>
     </div>
