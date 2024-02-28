@@ -3,3 +3,4 @@ import { Turbo } from "@hotwired/turbo-rails"
 Turbo.session.drive = false
 import 'controllers';
 import './controllers/task';
+import './controllers/crop_image'

@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   get '/user' => "users#index"
   get '/user/show/:id' => 'users#show'
   get '/user/:id/edit' => 'users#edit'
-  post '/user/:id/update' => 'users#update'
+  patch '/user/:id/update' => 'users#update'
   get '/' => "home#top", as: 'home'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

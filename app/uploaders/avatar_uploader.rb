@@ -3,7 +3,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
   include CarrierWave::MiniMagick
-  process resize_to_fit: [100, 100]
+  process resize_to_fit: [500, 500]
 
   # Choose what kind of storage to use for this uploader:
   # storage :fog
@@ -21,6 +21,24 @@ class AvatarUploader < CarrierWave::Uploader::Base
   def extension_allowlist
     %w(jpg jpeg gif png)
   end
+
+  version :cropped do
+    process :crop
+  end
+
+  private
+    def crop
+      manipulate! do |img|
+        crop_x = model.image_x.to_i
+        crop_y = model.image_y.to_i
+        crop_w = model.image_w.to_i
+        crop_h = model.image_h.to_i
+
+        img.crop "#{crop_w}x#{crop_h}+#{crop_x}+#{crop_y}"
+        img
+      end
+    end
+
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url(*args)
   #   # For Rails 3.1+ asset pipeline compatibility:

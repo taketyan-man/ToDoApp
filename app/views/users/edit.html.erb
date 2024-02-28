@@ -9,14 +9,17 @@
         </div>
       <% end %>
     <% end %>
-      <%= form_with(url: "/user/#{@user.id}/update") do |f|%>
+      <%= form_with(url: "/user/#{@user.id}/update", model: @user, ) do |f|%>
         <%= f.label :user_image, 'プロフィール画像' %>
-        <%= f.file_field :user_image, name: 'user_image', class:'form-control' %> 
-        <%= f.hidden_field :user_image_cache %>
+        <div id="image-wrapper">
+          <%= image_tag "#{@user.user_image}", id: :prev_img %>
+          <canvas id="cropped_canvas" style="display:none"></canvas>
+        </div>
+        <%= f.file_field :user_image, id: :trim_img_uploder, value: "assets/default.png" %>
         <%= f.label :name, 'ユーザー名' %>
         <%= f.text_field :name, name: 'name', value: @user.name %>
         <%= f.label :email, 'メールアドレス' %>
-        <%= f.text_field :email, name: 'email', value: @user.email%>
+        <%= f.text_field :email, name: 'email', value: @user.email %>
         <% if @user.public %>
           <div class="form-public-box">
             <%= f.radio_button :public, "true", id: "public", checked: "checked", value: "true", class: "public-radio", name: 'public' %>
@@ -32,10 +35,30 @@
             <%= f.label :public, "非公開" %>
           </div>
         <% end %>
+        <%= f.hidden_field :image_x, id: "image_x" %>
+        <%= f.hidden_field :image_y, id: "image_y" %>
+        <%= f.hidden_field :image_w, id: "image_w" %>
+        <%= f.hidden_field :image_h, id: "image_h" %>
+        <%= f.hidden_field :aspect_numerator, id: "aspect_numerator", value: "1.0" %>
+        <%= f.hidden_field :aspect_denominator ,id: "aspect_denominator", value: "1.0" %>
         <div class="submit-button">
           <%= f.submit value: "編集" %>
         </div>
       <% end %>
+
+      <div id="modal_area">
+        <div id="modal_back_area" class="modal_back_area"></div>
+        <div class="modal_wrapper">
+          <div class="modal_padding modal_title_wrapper">
+            <h4>範囲を選択してください</h4>
+          </div>
+          <div class="canvas_wrapper">
+            <td><canvas id="source_canvas" width="1" height="1"></canvas></td>
+          </div>
+          <button type="button" id="close_button">OK</button>
+        </div>
+      </div>
+
     </div>
   </div>
 </div>

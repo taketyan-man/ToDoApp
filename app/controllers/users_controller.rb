@@ -43,9 +43,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.name = params[:name]
-    @user.email = params[:email]
-    @user.user_image = params[:user_image]
+    @user.update(user_params)
     if params[:public] == "true"
       @user.public = true
       @todos = ToDo.where(user_id: params[:id], public: false)
@@ -65,7 +63,7 @@ class UsersController < ApplicationController
       redirect_to("/tasks")
     else
       redirect_to "/user/#{@user.id}/edit", flash: { error: @user.errors.full_messages }
-    end
+    end 
   end
 
   def yourdetil
@@ -88,4 +86,20 @@ class UsersController < ApplicationController
     end
 
   end
+
+  private
+    def user_params
+      attrs = [
+        :image_x,
+        :image_y,
+        :image_w,
+        :image_h,
+        :aspect_numerator,
+        :aspect_denominator,
+        :name,
+        :email,
+        :user_image
+      ]
+      params.require(:user).permit(attrs)
+    end
 end
