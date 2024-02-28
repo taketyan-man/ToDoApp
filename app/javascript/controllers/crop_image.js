@@ -1,12 +1,11 @@
-document.addEventListener("turbolinks:load", function(){
 
-  $('#trim_img_uploder').on('click', function(e){
+  $('#trim_img_uploder').on('click', function(){
     $(this).val('');
     document.getElementById("prev_img").style.display = '';
     document.getElementById("cropped_canvas").style.display = 'none';
   });
 
-  $('#trim_img_uploder').on('change', function(e){
+  $('#trim_img_uploder').on('change', function(){
     document.getElementById("prev_img").style.display = 'none';
     document.getElementById("cropped_canvas").style.display = '';
     $('#modal_area').fadeIn();
@@ -57,6 +56,7 @@ document.addEventListener("turbolinks:load", function(){
         );
 
         $('#close_button,#modal_back_area').on('click', function(){
+          console.log(199);
           const cropped_canvas = document.getElementById("cropped_canvas");
           let ctx = cropped_canvas.getContext("2d");
           let cropped_image_width = image.height * crop_aspect_ratio;
@@ -76,4 +76,3 @@ document.addEventListener("turbolinks:load", function(){
 
   const uploader = document.getElementById('trim_img_uploder');
   uploader.addEventListener('change', crop_image);
-});

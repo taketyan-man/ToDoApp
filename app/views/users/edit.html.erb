@@ -1,7 +1,8 @@
 <div class="user">
   <div class="user-header">
     <h1>編集画面</h1>
-    <div class="user_main">
+  </div>
+  <div class="user-main">
     <% if flash[:error].present? %>
       <% flash[:error].each do |message| %>
         <div class="form-error">
@@ -10,16 +11,20 @@
       <% end %>
     <% end %>
       <%= form_with(url: "/user/#{@user.id}/update", model: @user, ) do |f|%>
-        <%= f.label :user_image, 'プロフィール画像' %>
+        <%= f.label :user_image, 'プロフィール画像', class: "img-text" %>
         <div id="image-wrapper">
-          <%= image_tag "#{@user.user_image}", id: :prev_img %>
+          <%= image_tag "#{@user.user_image}", id: :prev_img, class: :user_img %>
           <canvas id="cropped_canvas" style="display:none"></canvas>
+          <%= f.file_field :user_image, id: :trim_img_uploder, value: "#{@user.user_image}" %>
         </div>
-        <%= f.file_field :user_image, id: :trim_img_uploder, value: "assets/default.png" %>
-        <%= f.label :name, 'ユーザー名' %>
-        <%= f.text_field :name, name: 'name', value: @user.name %>
-        <%= f.label :email, 'メールアドレス' %>
-        <%= f.text_field :email, name: 'email', value: @user.email %>
+        <div class="form-wrapper">
+          <%= f.label :name, 'ユーザー名' %>
+          <%= f.text_field :name, name: 'name', value: @user.name %>
+        </div>
+        <div class="form-wrapper">
+          <%= f.label :email, 'メールアドレス' %>
+          <%= f.text_field :email, name: 'email', value: @user.email %>
+        </div>
         <% if @user.public %>
           <div class="form-public-box">
             <%= f.radio_button :public, "true", id: "public", checked: "checked", value: "true", class: "public-radio", name: 'public' %>
@@ -61,4 +66,3 @@
 
     </div>
   </div>
-</div>

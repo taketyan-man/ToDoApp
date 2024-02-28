@@ -5,12 +5,13 @@
   padding-bottom: 5px;
 }
 
-.user {
-  text-align: center;
+.user-header {
   padding-top: 20px;
+  text-align: center;
 }
 
-.user_main {
+.user-main {
+  text-align: center;
   background-color: rgb(253, 244, 234);
   padding-top: 24px;
   padding-bottom: 24px;
@@ -155,6 +156,7 @@ input[type="submit"] {
   padding: 0;
   margin-bottom: 4px;
 }
+
 .userEditList {
   background-color: #3ecdc6;
   color: white;
@@ -198,4 +200,48 @@ input[type="submit"] {
   text-align: center;
   margin: auto;
   border: 2px solid black;
+}
+
+#image-wrapper {
+  padding-top: 20px;
+}
+
+#trim_img_uploder {
+  margin-top: 8px;
+  width: 50%;
+  border: 1px solid #d8dadf;
+  padding: 10px;
+  color: #57575f;
+  font-size: 16px;
+  letter-spacing: 2px;
+  border-radius: 2px;
+  background-color: white;
+}
+
+.user_img {
+  display: block;
+  margin: auto;
+  border: 2px solid black;
+  margin-bottom: 4px;
+}
+
+.form-wrapper label{
+  display: block;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 18px;
+}
+
+
+#modal_area {
+  display: none;
+  position: absolute;
+  background-color: gray;
+  top: 50%;
+  width: 100%;
+  z-index: 10;
+}
+
+#close_button {
+  cursor: pointer;
 }
