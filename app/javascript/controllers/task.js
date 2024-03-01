@@ -1,5 +1,5 @@
-import jquery from "jquery";
-window.$ = jquery;
+import jquery from "jquery"
+window.$ = jquery
 $(window).on('scroll', function() {
   
   var pos = $(window).scrollTop();

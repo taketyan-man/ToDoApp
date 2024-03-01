@@ -1,4 +1,6 @@
 
+console.log(100);
+document.addEventListener("turbolinks:load", function(){
   $('#trim_img_uploder').on('click', function(){
     $(this).val('');
     document.getElementById("prev_img").style.display = '';
@@ -76,3 +78,4 @@
 
   const uploader = document.getElementById('trim_img_uploder');
   uploader.addEventListener('change', crop_image);
+});
