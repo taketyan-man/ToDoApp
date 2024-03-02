@@ -1,0 +1,36 @@
+Arguments: 
+  /Users/takeyoshirui/.nodebrew/node/v20.10.0/bin/node /usr/local/Cellar/yarn/1.22.4/libexec/bin/yarn.js add cropper.js
+
+PATH: 
+  /Users/takeyoshirui/.progate/bin:/Users/takeyoshirui/.rbenv/shims:/Users/takeyoshirui/.rbenv/bin:/Users/takeyoshirui/.nodebrew/current/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Library/Apple/usr/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Users/takeyoshirui/.progate/bin:/Users/takeyoshirui/.rbenv/shims:/Users/takeyoshirui/.rbenv/bin:/Users/takeyoshirui/.nodebrew/current/bin
+
+Yarn version: 
+  1.22.4
+
+Node version: 
+  20.10.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/cropper.js: Not found
+      at params.callback [as _callback] (/usr/local/Cellar/yarn/1.22.4/libexec/lib/cli.js:66987:18)
+      at self.callback (/usr/local/Cellar/yarn/1.22.4/libexec/lib/cli.js:140748:22)
+      at Request.emit (node:events:514:28)
+      at Request.<anonymous> (/usr/local/Cellar/yarn/1.22.4/libexec/lib/cli.js:141720:10)
+      at Request.emit (node:events:514:28)
+      at IncomingMessage.<anonymous> (/usr/local/Cellar/yarn/1.22.4/libexec/lib/cli.js:141642:12)
+      at Object.onceWrapper (node:events:628:28)
+      at IncomingMessage.emit (node:events:526:35)
+      at endReadableNT (node:internal/streams/readable:1589:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

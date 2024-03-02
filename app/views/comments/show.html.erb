@@ -1,7 +1,10 @@
 <div class="todo">
 <div class="comment-show">
   <div class="comment-show-todo">
-    <h2><%= User.find(@todo.user_id).name %></h2>
+    <div class="text-left">
+      <%= image_tag "#{@todo.user.user_image.cropped}", class:"todo-user-img"%>
+      <h2><%= @todo.user.name %></h2>
+    </div>
     <p class="todo-text"><%= @todo.text %></p>
     <p class="todo-date"><%= @todo.limit_date %></p>
     <% if @todo.fighted?(session[:user_id]) %>
@@ -14,8 +17,11 @@
   <div class="comment-box">
   <% @comments.each do |comment| %>
     <div class="comment-cnt">
-      <p class="comment-user-name"><%= User.find(comment.user_id).name %></p>
-      <p><%= comment.text %></p>
+      <div class="comment-left">
+        <%= image_tag "#{comment.user.user_image.cropped}", class:"comment-user-img"%>
+        <p class="comment-user-name"><%= comment.user.name %></p>
+      </div>
+      <p class="comment-text"><%= comment.text %></p>
       <div class="commets-edit">
         <% if session[:user_id] == comment.user_id %>
           <%= link_to('' , "/tasks/comment/#{comment.id}/edit", class: "fas fa-pen fa-lg edit-pen") %>

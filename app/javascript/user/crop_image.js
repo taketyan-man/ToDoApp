@@ -1,6 +1,3 @@
-
-console.log(100);
-document.addEventListener("turbolinks:load", function(){
   $('#trim_img_uploder').on('click', function(){
     $(this).val('');
     document.getElementById("prev_img").style.display = '';
@@ -17,7 +14,7 @@ document.addEventListener("turbolinks:load", function(){
   const scaled_width = 500;
   const aspect_numerator = parseFloat(document.getElementById("aspect_numerator").value)
   const aspect_denominator = parseFloat(document.getElementById("aspect_denominator").value)
-  const crop_aspect_ratio = aspect_denominator / aspect_numerator;
+  const crop_aspect_ratio = 1 /1;
 
   const crop_image = function (e) {
     const files = e.target.files;
@@ -58,7 +55,6 @@ document.addEventListener("turbolinks:load", function(){
         );
 
         $('#close_button,#modal_back_area').on('click', function(){
-          console.log(199);
           const cropped_canvas = document.getElementById("cropped_canvas");
           let ctx = cropped_canvas.getContext("2d");
           let cropped_image_width = image.height * crop_aspect_ratio;
@@ -78,4 +74,3 @@ document.addEventListener("turbolinks:load", function(){
 
   const uploader = document.getElementById('trim_img_uploder');
   uploader.addEventListener('change', crop_image);
-});

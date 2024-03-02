@@ -132,15 +132,15 @@ input[type="submit"] {
 .user-show-border {
   margin-left: auto;
   margin-right: 60px;
-  width: 200px;
-  height: 200px;
-  border-radius: 100px;
-  border: solid 2px black;
 }
 
 .user-show-img {
   width: 200px;
+  height: 200px;
   border-radius: 100px;
+  object-fit: cover;
+  border-radius: 100px;
+  border: solid 2px black;
 }
 
 .user-show-text {
@@ -223,6 +223,20 @@ input[type="submit"] {
   margin: auto;
   border: 2px solid black;
   margin-bottom: 4px;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+#cropped_canvas {
+  display: block;
+  margin: auto;
+  border: 2px solid black;
+  margin-bottom: 4px;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
 }
 
 .form-wrapper label{
@@ -232,16 +246,30 @@ input[type="submit"] {
   font-size: 18px;
 }
 
-
 #modal_area {
   display: none;
   position: absolute;
   background-color: gray;
   top: 50%;
-  width: 100%;
+  width: 50%;
   z-index: 10;
+  margin-left: 25%;
+}
+
+.modal_back_area {
+  position: relative;
 }
 
 #close_button {
   cursor: pointer;
 }
+
+.cropper-view-box,
+.cropper-face {
+  border-radius: 50%;
+  cursor: grab;
+  outline: initial;
+}
+.cropper-face:active {
+  cursor: grabbing;
+} 

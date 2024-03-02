@@ -6,18 +6,20 @@
 .comment-show-todo{
   background-color: rgb(210, 210, 210);
   margin-top: 80px;
+  padding-top: 12px;
   padding-bottom: 16px;
   margin-bottom: 12px;
   border-top: 1px solid black;
   border-bottom: 1px solid black;
+  
 }
 
 .comment-show-todo h2{
   text-align: left;
   padding: 0;
   margin: 0;
-  padding-left: 32px;
-  margin-top: 16px;
+  padding-left: 12px;
+  margin-top: 15px;
   
 }
 
@@ -56,8 +58,27 @@
   margin-top: auto;
 }
 
+.comment-left {
+  text-align: center;
+  display: flex;
+  margin: auto;
+}
+
+.comment-user-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  object-fit: cover;
+  border: solid 2px black;
+}
+
 .comment-user-name {
+  margin-left: 4px;
   font-size: 16px;
+}
+
+.comment-text{
+  padding-top: 24px;
 }
 
 .comment-delete {

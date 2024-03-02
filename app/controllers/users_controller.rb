@@ -44,6 +44,8 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
+    @user.name = params[:name]
+    @user.email = params[:email]
     if params[:public] == "true"
       @user.public = true
       @todos = ToDo.where(user_id: params[:id], public: false)
@@ -60,6 +62,7 @@ class UsersController < ApplicationController
       end
     end
     if @user.save
+      flash[:notice] = "ユーザー情報の編集しました。"
       redirect_to("/tasks")
     else
       redirect_to "/user/#{@user.id}/edit", flash: { error: @user.errors.full_messages }
@@ -96,8 +99,6 @@ class UsersController < ApplicationController
         :image_h,
         :aspect_numerator,
         :aspect_denominator,
-        :name,
-        :email,
         :user_image
       ]
       params.require(:user).permit(attrs)
