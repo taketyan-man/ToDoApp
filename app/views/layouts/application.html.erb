@@ -68,9 +68,6 @@
                     <%= link_to('ToDoリスト', '/tasks', class:"homeUserList") %>
                   </li>
                   <li class="home-user-li">
-                    <%= link_to('ユーザ詳細', "/user/show/#{session[:user_id]}", class:"homeUserList") %>
-                  </li>
-                  <li class="home-user-li">
                     <%= link_to('ユーザ編集', "/user/#{session[:user_id]}/edit", class:"homeUserList") %>
                   </li>
                   <li class="home-user-li">
