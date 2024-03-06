@@ -28,6 +28,7 @@ body {
 .title {
   font-weight: 800;
   font-size: 28px;
+  padding-left: 12px;
 }
 
 .header {
@@ -61,6 +62,7 @@ body {
   color: #2d3133;
   text-decoration: none;
   margin-top: 8px;
+  font-weight: bold;
 }
 
 ul {
@@ -211,4 +213,26 @@ li {
 
 .fa-arrow-up:hover {
   color: rgba(42, 45, 47, 0.8);
+}
+
+@media (max-width: 650px) {
+  .topBox {
+    margin: 0;
+    padding: 0;
+    padding-top: 16px;
+  }
+
+  .topTitle {
+    font-size: 48px;
+  }
+
+  .topList {
+    font-size: 24px;
+    padding: 8px 100px;
+  }
+
+  .topBox p {
+    margin-bottom: 8px;
+  }
+
 }

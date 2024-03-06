@@ -88,8 +88,19 @@
   color: #fd3a3a;
 }
 
+.limit-box {
+  position: relative;
+  height: 100%;
+}
+
 .index-limit {
   margin-right: 20px;
+  color: black;
+  position: absolute;
+  margin: 0;
+  bottom: 0;
+  left: calc(50% - 50px);
+  text-align: center;
 }
 
 .index-btn-box {
@@ -104,6 +115,7 @@
   background-color: #3ecdc6;
   border-radius: 4px;
   cursor: pointer;
+  margin-top: 12px;
 }
 
 .sub-cont{
@@ -298,4 +310,14 @@
   font-size: 1.33333em;
   width: 68px;
   cursor: pointer;
+}
+
+@media (max-width: 650px) {
+  .todo {
+    padding: 0;
+  }
+
+  .list-grid {
+    grid-template-columns: 40% 40% 20%;
+  }
 }

@@ -273,3 +273,9 @@ input[type="submit"] {
 .cropper-face:active {
   cursor: grabbing;
 } 
+
+@media (max-width: 650px) {
+  input {
+    width: 80%;
+  }
+}
