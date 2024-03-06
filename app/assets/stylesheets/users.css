@@ -188,7 +188,7 @@ input[type="submit"] {
 }
 
 .chevron-up {
-  margin-top: 4px;
+  padding-top: 10px;
 }
 
 .active {
@@ -278,4 +278,14 @@ input[type="submit"] {
   input {
     width: 80%;
   }
+
+  .user-show-border {
+    margin-right: 0;
+  }
+
+  .user-show-img {
+    width: 150px;
+    height: 150px;
+    margin-top: 20px;
+  } 
 }

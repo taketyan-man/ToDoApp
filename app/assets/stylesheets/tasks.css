@@ -107,15 +107,19 @@
   margin-left: auto;
   text-align: left;
   padding-right: 12px;
+  position: relative;
 }
 
 .index-done-btn {
+  position: absolute; 
+  width: 60px;
   padding: 8px 10px;
   border: 2px black solid;
   background-color: #3ecdc6;
   border-radius: 4px;
   cursor: pointer;
-  margin-top: 12px;
+  right: 12px;
+  bottom: 6px;
 }
 
 .sub-cont{
