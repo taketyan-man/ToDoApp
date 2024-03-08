@@ -58,7 +58,7 @@
               <% end %>
             </li>
             <li> 
-              <%= link_to("", "/tasks/list", class:"userList fas fa-home ") %>
+              <%= link_to("", "/tasks/list", class:"userList fas fa-home") %>
             </li>
             <li>
               <a class="userList fas fa-user"></a>
@@ -106,8 +106,13 @@
     <div class="main">
       <%= yield %>
     </div>
-      <div class="arrow-box">
-        <i class="fas fa-arrow-up"></i>
-      </div>
+    <div class="arrow-box">
+      <i class="fas fa-arrow-up"></i>
+    </div>
+    <footer>
+    <a class="fas fa-bell userList"></a>
+    <%= link_to("", "/tasks/list", class:"userList fas fa-home") %>
+    <a class="userList fas fa-user"></a>
+    </footer>
   </body>
 </html>

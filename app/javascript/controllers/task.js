@@ -30,6 +30,16 @@ $(function (){
     $(this).parent().parent().removeClass('active');
   })
 
+ 
+  $(window).on('resize', function() {
+    if (window.matchMedia("(max-width: 550px)").matches) {
+     
+    } else {
+      $("#pc").show();
+      $("#mobile").hide();
+    };
+  });
+  
   $('.fa-user').on('click', function() {
     if($('.home-user-box').hasClass('box-active')) {
       $('.home-user-box').removeClass('box-active');
