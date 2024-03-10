@@ -216,6 +216,10 @@ li {
 }
 
 @media (max-width: 650px) {
+  .header-con ul {
+    display: none;
+  }
+
   .topBox {
     margin: 0;
     padding: 0;
