@@ -215,6 +215,10 @@ li {
   color: rgba(42, 45, 47, 0.8);
 }
 
+footer {
+  display: none;
+}
+
 @media (max-width: 650px) {
   .header-con ul {
     display: none;
@@ -239,4 +243,40 @@ li {
     margin-bottom: 8px;
   }
 
+  .arrow-box {
+    position: fixed;
+    bottom: 36px;
+  }
+
+  footer {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    padding: 8px;
+    background-color: white;
+    position: fixed;
+    border-top: 2px solid black;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
+  }
+
+  .fa-bell {
+    margin: auto;
+  }
+
+  .fa-home {
+    margin: auto;
+  }
+
+  .fa-user {
+    margin: auto;
+  }
+
+  .fa-plus-circle {
+    margin: auto;
+    font-size: 36px;
+    cursor: pointer;
+    text-decoration: none;
+  }
 }
