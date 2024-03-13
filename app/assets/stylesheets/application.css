@@ -155,6 +155,7 @@ li {
   border-bottom: gray 1px solid;
   padding-bottom: 4px;
   margin  : 8px;
+  text-align: center;
 }
 
 .notice-ul a:last-child li {
@@ -179,6 +180,10 @@ li {
 .homeUserList {
   text-decoration: none;
   color: black; 
+}
+
+.footer-con {
+  display: none;
 }
 
 .arrow-box {
@@ -224,6 +229,10 @@ footer {
     display: none;
   }
 
+  .footer-con {
+    display: block ;
+  }
+
   .topBox {
     margin: 0;
     padding: 0;
@@ -245,7 +254,60 @@ footer {
 
   .arrow-box {
     position: fixed;
-    bottom: 36px;
+    bottom: 48px;
+  }
+
+  .home-user-ul {
+    margin-top: 4px;
+  }
+
+  .home-user-alert {
+    z-index: 10;
+    padding: 8px;
+    background-color: white;
+    height: calc(100% - 145px);
+    position: fixed;
+    display: none;
+    overflow-y: scroll;
+    top: 80px;
+    left: 0;
+    border-radius: 0;
+    max-height: none;
+  }
+
+  .for-alert {
+    height: 12px;
+    width: 12px;
+    background-color: #3ecdc6;
+    border-radius: 6px;
+    z-index: 30;
+    position: fixed;
+    top: auto;
+    left: auto;
+    bottom: 10px;
+    left: calc(25% / 2 + 8px);
+  }
+
+  .home-user-box {
+    background-color: white;
+    width: 90%;
+    position: fixed;
+    z-index: 10;
+    top: 80px;
+    left: 0;
+    right: 0;
+    border: none;
+    border-radius: 0;
+    height: 100%;
+    min-width: 290px  ;
+  }
+
+  .home-user-li {
+    font-size: 36px; 
+    border-bottom: 2px solid #74C0FC;
+    margin: 4px 24px 4px;
+    font-weight: bold;
+
   }
 
   footer {
@@ -279,4 +341,8 @@ footer {
     cursor: pointer;
     text-decoration: none;
   }
+}
+
+.box-active {
+  display: block;
 }

@@ -105,16 +105,57 @@
     <% end %>
     <div class="main">
       <%= yield %>
+      <div class="footer-con">
+        <% if @notices.blank? %>
+          <div class="home-user-alert">
+            <p style="padding-left: 20px;">お知らせはありません</p>
+          </div>
+        <% else %> 
+          <div class="for-alert">
+          </div>
+          <div class="home-user-alert">
+            <ul class="notice-ul">
+              <% @notices.each do |notice| %>
+                <%= link_to "/tasks/notice/#{notice.id}/checked" do %> 
+                <li class="notice-li">
+                  <% if notice.action == 0 %>
+                    <p>あなたの投稿が応援されました。</p>
+                    <p class="notice-text"><%= ToDo.find(notice.to_do_id).text %></p>
+                  <% elsif notice.action == 1 %>
+                    <p>あなたの投稿にコメントされました。</p>
+                    <p class="notice-text"><%= Comment.find(notice.action_id).text %></p>
+                  <% elsif notice.action == 2 %>
+                    <p>あなたのコメントがポリシー違反のため削除されました。</p>
+                  <% end %>
+                </li>
+                <% end %>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <div class="home-user-box">
+          <ul class="home-user-ul">
+            <li class="home-user-li">
+              <%= link_to('ToDoリスト', '/tasks', class:"homeUserList") %>
+            </li>
+            <li class="home-user-li">
+              <%= link_to('ユーザ編集', "/user/#{session[:user_id]}/edit", class:"homeUserList") %>
+            </li>
+            <li class="home-user-li">
+              <%= link_to('ログアウト', '/user/logout', class:"homeUserList") %>
+            </li>
+          </ul>
+        </div>
+      </div>  
     </div>
     <div class="arrow-box">
       <i class="fas fa-arrow-up"></i>
     </div>
     <footer>
-    <a class="fas fa-bell"></a>
+    <a class="fas fa-bell footer-bell"></a>
     <%= link_to("", "/tasks/list", class:"userList fas fa-home") %>
-    <a class="userList fas fa-user"></a>
+    <a class="userList fas fa-user footer-user"></a>
     <%= link_to("", "/tasks/new", class:"fas fa-plus-circle", style: "color: #74C0FC;") %>
-    
     </footer>
   </body>
 </html>
