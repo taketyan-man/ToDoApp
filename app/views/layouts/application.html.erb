@@ -130,7 +130,7 @@
                 </li>
                 <% end %>
               <% end %>
-            </ul>
+            </ul>                  
           </div>
         <% end %>
         <div class="home-user-box">
@@ -146,16 +146,18 @@
             </li>
           </ul>
         </div>
-      </div>  
+      </div>
     </div>
     <div class="arrow-box">
       <i class="fas fa-arrow-up"></i>
     </div>
-    <footer>
-    <a class="fas fa-bell footer-bell"></a>
-    <%= link_to("", "/tasks/list", class:"userList fas fa-home") %>
-    <a class="userList fas fa-user footer-user"></a>
-    <%= link_to("", "/tasks/new", class:"fas fa-plus-circle", style: "color: #74C0FC;") %>
-    </footer>
+    <% if session[:user_id] %>
+      <footer>
+        <a class="fas fa-bell footer-bell"></a>
+        <%= link_to("", "/tasks/list", class:"userList fas fa-home") %>
+        <a class="userList fas fa-user footer-user"></a>
+        <%= link_to("", "/tasks/new", class:"fas fa-plus-circle", style: "color: #74C0FC;") %>
+      </footer>
+    <% end %>
   </body>
 </html>
