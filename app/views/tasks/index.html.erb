@@ -12,7 +12,7 @@
         </div>
         <div class="user-show-text">
           <h2 class="user-show-name"><%= @user.name %></h2>
-          <p><a class="user-show-label">メールアドレス：</a><%= @user.email %></p>
+          <p><%= @user.email %></p>
           <p><a class="user-show-label">達成済タスク：</a><%= @todo_done.count %></p>
           <p><a class="user-show-label">未達成タスク：</a><%= @todo.count %></p>
           <% if @user.public %>

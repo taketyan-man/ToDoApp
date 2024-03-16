@@ -289,3 +289,14 @@ input[type="submit"] {
     margin-top: 20px;
   } 
 }
+
+@media (max-width: 400px) {
+  .active-grid {
+    display: block;
+  }
+
+  .user-show-text {
+    text-align: left;
+    margin-left: 10%;
+  }
+}
