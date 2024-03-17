@@ -180,6 +180,8 @@ li {
 .homeUserList {
   text-decoration: none;
   color: black; 
+  border-bottom: 2px orange double;
+
 }
 
 .footer-con {
@@ -273,6 +275,10 @@ footer {
     left: 0;
     border-radius: 0;
     max-height: none;
+    width: auto;
+    max-width: 300px;
+    min-width: 283px;
+    padding: 0;
   }
 
   .for-alert {
@@ -299,12 +305,18 @@ footer {
     border: none;
     border-radius: 0;
     height: 100%;
-    min-width: 290px  ;
+    min-width: 290px;
+    padding-top: 12px;
+    border: 2px solid black;
+  }
+
+  .homeUserList {
+    border-bottom: 8px double orange;
+    padding: 0px 12px;
   }
 
   .home-user-li {
     font-size: 36px; 
-    border-bottom: 2px solid #74C0FC;
     margin: 4px 24px 4px;
     font-weight: bold;
 

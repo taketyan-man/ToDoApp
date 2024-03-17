@@ -152,3 +152,18 @@
 .comment-new-submit {
   text-align: center;
 }
+
+@media (max-width: 650px) {
+  .comment-box {
+    width: 100%;
+  }
+
+  .comment-cnt {
+    display: block;
+  }
+  
+  
+  .newtext {
+    font-size: 12px;
+  }
+}

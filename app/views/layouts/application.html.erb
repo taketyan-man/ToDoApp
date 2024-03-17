@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ToDoApp</title>
+    <title>ToDoパルス</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= favicon_link_tag('logo1.png') %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <%= yield(:js) %>
@@ -19,9 +19,9 @@
     <div class="header">
       <div class="header-title">
       <% if session[:user_id] %>
-        <%= link_to("ToDoアプリ", "/tasks", class:"userList title") %>
+        <%= link_to("ToDoパルス", "/tasks", class:"userList title") %>
       <% else %>
-        <%= link_to("ToDoアプリ", "/", class:"userList title") %>
+        <%= link_to("ToDoパルス", "/", class:"userList title") %>
       <% end %>
       <div class="header-con">
         <% if session[:user_id] %>

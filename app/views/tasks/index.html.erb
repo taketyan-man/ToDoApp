@@ -91,7 +91,7 @@
                   <p class="todo-list-text index-text-box"><%= todo.text %></p>
                 <% end %>
                 <%= link_to "/tasks/#{todo.id}/comment",class: "comment-link" do %> 
-                  <p class="index-limit"><%= todo.limit_date %></p> 
+                  <div class="limit-box"><p class="index-limit"><%= todo.limit_date %></p></div> 
                 <% end %>
                 <div class="index-btn-box">
                   <%= button_to '未完了', done_path(todo.id),  date:{"turbo-method": :post}, class:"index-done-btn"%>
