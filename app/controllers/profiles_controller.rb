@@ -9,7 +9,7 @@ class ProfilesController < ApplicationController
           flash[:notice] = "ユーザーを更新しました"
           redirect_to  "/user/#{@user.id}/edit"
       else
-          flash.[:attention] = "ユーザーを更新できませんでした"
+          flash[:attention] = "ユーザーを更新できませんでした"
           render :edit
       end
   end
