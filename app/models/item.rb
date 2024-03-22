@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  mount_uploader :image,  ImageUploader
+  mount_uploader :image,  ItemUploader
 
   # crop用の仮想attribute
   attr_accessor :image_x
