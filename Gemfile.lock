@@ -230,6 +230,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-20
+  x86_64-darwin-23
 
 DEPENDENCIES
   bootsnap
@@ -253,7 +254,7 @@ DEPENDENCIES
   webdrivers
 
 RUBY VERSION
-   ruby 2.7.6p219
+   ruby 3.0.3p157
 
 BUNDLED WITH
    2.4.12

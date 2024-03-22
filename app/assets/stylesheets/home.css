@@ -1,6 +1,11 @@
 .topBox {
+  margin: 0;
+  padding: 0;
+  padding-top: 32px;
+  padding-bottom: 32px;
+  margin-top: 180px;
   text-align: center;
-  margin-top: 40px;
+  background-color: rgb(215, 215, 215);
 }
 
 .topTitle {
@@ -8,6 +13,11 @@
   font-size: 80px;
   margin:40px auto 40px;
   padding: 4px 20px;
+}
+
+
+.topWelcome {
+  font-size: 56px;
 }
 
 .topList {

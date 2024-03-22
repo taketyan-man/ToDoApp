@@ -168,7 +168,6 @@ li {
 
 .home-user-ul{
   display: block;
-
 }
 
 .home-user-li{
@@ -180,8 +179,7 @@ li {
 .homeUserList {
   text-decoration: none;
   color: black; 
-  border-bottom: 2px orange double;
-
+  font-weight: bold;
 }
 
 .footer-con {
@@ -236,9 +234,8 @@ footer {
   }
 
   .topBox {
-    margin: 0;
-    padding: 0;
-    padding-top: 16px;
+    padding-top: 32px;
+    background-color: rgb(215, 215, 215)
   }
 
   .topTitle {
@@ -296,7 +293,7 @@ footer {
 
   .home-user-box {
     background-color: white;
-    width: 90%;
+    max-width: 320px;
     position: fixed;
     z-index: 10;
     top: 80px;

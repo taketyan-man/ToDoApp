@@ -5,6 +5,11 @@
   padding-bottom: 5px;
 }
 
+.user {
+  background-color: rgb(210, 210, 210);
+  padding-bottom: 24px;
+}
+
 .user-header {
   padding-top: 20px;
   text-align: center;
