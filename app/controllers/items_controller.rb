@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
 
     def item_params
       params.require(:item).permit(
-        :image
+        :image,
         :image_x,
         :image_y,
         :image_w,
