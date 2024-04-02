@@ -21,10 +21,7 @@ test:
   database: db/test.sqlite3
 
 production:
-  adapter: mysql2
-  encoding: utf8
-  database: todoparusu
-  username: your_mysql_username
-  password: your_mysql_password
-  host: your_mysql_host
-  port: your_mysql_port
+  <<: *default
+  adapter: postgresql
+  encoding: unicode
+  url: <%= ENV['DATABASE_URL'] %>
