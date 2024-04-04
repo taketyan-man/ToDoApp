@@ -6,7 +6,7 @@ databases:
 
 services:
   - type: web
-    name: to_do_app_production
+    name: ToDoApp
     env: ruby
     region: singapore
     buildCommand: "./bin/render-build.sh"
