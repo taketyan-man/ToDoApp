@@ -7,7 +7,6 @@ class CreateToDos < ActiveRecord::Migration[7.0]
       t.boolean :done
       t.integer :fight 
       t.integer :comment
-      t.boolean :done
       t.boolean :public
       
       t.timestamps
