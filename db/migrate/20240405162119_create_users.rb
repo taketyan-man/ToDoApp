@@ -6,7 +6,7 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.string  :password
       t.string  :user_image
       t.boolean :public
-      
+ 
       t.timestamps
     end
   end

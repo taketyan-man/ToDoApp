@@ -7,7 +7,7 @@ class CreateNotices < ActiveRecord::Migration[7.0]
       t.integer :action_id
       t.boolean :checked
       t.reference :notices, :to_do, null: false, fpreign_key: true
-    
+      
       t.timestamps
     end
   end
