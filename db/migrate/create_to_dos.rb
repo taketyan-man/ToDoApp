@@ -6,10 +6,8 @@ class CreateToDos < ActiveRecord::Migration[7.0]
       t.date :limit_date
       t.boolean :done
       t.integer :fight 
-      t.string:comment
+      t.integer :comment
       t.boolean :done
-      t.integer :fight
-      t.string :comment
       t.boolean :public
       
       t.timestamps
