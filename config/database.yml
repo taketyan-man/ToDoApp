@@ -24,4 +24,7 @@ production:
   <<: *default
   adapter: postgresql
   encoding: unicode
-  url: <%= ENV['DATABASE_URL'] %>
+  pool: 5
+  database: ToDo_Pulse
+  username: user 
+  password: <%= ENV['TODOPULSE_DATABASE_PASSWORD'] %>
