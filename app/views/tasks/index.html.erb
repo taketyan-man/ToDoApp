@@ -81,7 +81,8 @@
 
     <div class="todo-list-box">
         <% if @todo_done.size == 0%>
-          <% m = 1 %>
+          <h2>達成済タスク</h2>
+          <%= link_to("ToDoを追加しよう", "/tasks/new", class: "list-text") %>
         <% else %>
           <h2>達成済タスク</h2>
           <% @todo_done.each do |todo| %>
@@ -122,6 +123,8 @@
       <div class="todo-list-box">
         <% if @todo_fight.size == 0%>
           <% m = 1 %>
+          <h2>応援タスク</h2>
+          <%= link_to("他の人のタスクを応援する", "/tasks/list",class: "fight-path") %>
         <% else %>
         <h2>応援タスク</h2>
           <% @todo_fight.each do |fight| %>

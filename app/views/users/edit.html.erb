@@ -1,72 +1,67 @@
-<div class="user">
-  <div class="user-header">
-    <h1>編集画面</h1>
-  </div>
-  <div class="user-main">
-    <% if flash[:error].present? %>
-      <% flash[:error].each do |message| %>
-        <div class="form-error">
-          <%= message %>
-        </div>
-      <% end %>
-    <% end %>
-      <%= form_with(url: "/user/#{@user.id}/update", model: @user, ) do |f|%>
-        <%= 'プロフィール画像' %>
-        <div id="image-wrapper">
-          <%= image_tag "#{@user.user_image.cropped}", id: :prev_img, class: :user_img %>
-          <canvas id="cropped_canvas" style="display:none"></canvas>
-          <%= f.file_field :user_image, id: :trim_img_uploder, value: "#{@user.user_image}" %>
-        </div>
-        <div class="form-wrapper">
-          <%= f.label :name, 'ユーザー名' %>
-          <%= f.text_field :name, name: 'name', value: @user.name %>
-        </div>
-        <div class="form-wrapper">
-          <%= f.label :email, 'メールアドレス' %>
-          <%= f.text_field :email, name: 'email', value: @user.email %>
-        </div>
-        <% if @user.public %>
-          <div class="form-public-box">
-            <%= f.radio_button :public, "true", id: "public", checked: "checked", value: "true", class: "public-radio", name: 'public' %>
-            <%= "公開" %>
-            <%= f.radio_button :notpublic, "false", id: "notpublic", name: "public", value: "false", class: "public-radio public-radio2" %>
-            <%= "非公開" %>
-          </div>
-        <% else %>
-          <div class="form-public-box">
-            <%= f.radio_button :public, "true", id: "public", value: "true", class: "public-radio", name: "public" %>
-            <%= "公開" %>
-            <%= f.radio_button :notpublic, "false", id: "notpublic", name: "public", checked: "checked", value: "false", class: "public-radio public-radio2" %>
-            <%= "非公開" %>
-          </div>
-        <% end %>
-        <%= f.hidden_field :image_x, id: "image_x" %>
-        <%= f.hidden_field :image_y, id: "image_y" %>
-        <%= f.hidden_field :image_w, id: "image_w" %>
-        <%= f.hidden_field :image_h, id: "image_h" %>
-        <%= f.hidden_field :aspect_numerator, id: "aspect_numerator", value: "1.0" %>
-        <%= f.hidden_field :aspect_denominator ,id: "aspect_denominator", value: "1.0" %>
-        <div class="submit-button">
-          <%= f.submit value: "編集" %>
-        </div>
-      <% end %>
-
-    <div id="modal_area">
-      <div id="modal_back_area" class="modal_back_area"></div>
-      <div class="modal_wrapper">
-        <div class="modal_padding modal_title_wrapper">
-          <h4>範囲を選択してください</h4>
-        </div>
-        <div class="canvas_wrapper">
-          <td><canvas id="source_canvas" width="1" height="1"></canvas></td>
-        </div>
-        <button type="button" id="close_button">OK</button>
+<div class="user-header">
+  <h1>編集画面</h1>
+</div>
+<div class="user-main">
+  <% if flash[:error].present? %>
+    <% flash[:error].each do |message| %>
+      <div class="form-error">
+        <%= message %>
       </div>
+    <% end %>
+  <% end %>
+  <%= form_with(url: "/user/#{@user.id}/update", model: @user, ) do |f|%>
+    <%= 'プロフィール画像' %>
+    <div id="image-wrapper">
+      <%= image_tag "#{@user.user_image.cropped}", id: :prev_img, class: :user_img %>
+      <canvas id="cropped_canvas" style="display:none"></canvas>
+      <%= f.file_field :user_image, id: :trim_img_uploder, value: "#{@user.user_image}" %>
+    </div>
+    <div class="form-wrapper">
+      <%= f.label :name, 'ユーザー名' %>
+      <%= f.text_field :name, name: 'name', value: @user.name %>
+    </div>
+    <div class="form-wrapper">
+      <%= f.label :email, 'メールアドレス' %>
+      <%= f.text_field :email, name: 'email', value: @user.email %>
+    </div>
+    <% if @user.public %>
+      <div class="form-public-box">
+        <%= f.radio_button :public, "true", id: "public", checked: "checked", value: "true", class: "public-radio", name: 'public' %>
+        <%= "公開" %>
+        <%= f.radio_button :notpublic, "false", id: "notpublic", name: "public", value: "false", class: "public-radio public-radio2" %>
+        <%= "非公開" %>
+      </div>
+    <% else %>
+      <div class="form-public-box">
+        <%= f.radio_button :public, "true", id: "public", value: "true", class: "public-radio", name: "public" %>
+        <%= "公開" %>
+        <%= f.radio_button :notpublic, "false", id: "notpublic", name: "public", checked: "checked", value: "false", class: "public-radio public-radio2" %>
+        <%= "非公開" %>
+      </div>
+    <% end %>
+    <%= f.hidden_field :image_x, id: "image_x" %>
+    <%= f.hidden_field :image_y, id: "image_y" %>
+    <%= f.hidden_field :image_w, id: "image_w" %>
+    <%= f.hidden_field :image_h, id: "image_h" %>
+    <%= f.hidden_field :aspect_numerator, id: "aspect_numerator", value: "1.0" %>
+    <%= f.hidden_field :aspect_denominator ,id: "aspect_denominator", value: "1.0" %>
+    <div class="submit-button">
+      <%= f.submit value: "編集" %>
+    </div>
+  <% end %>
+  <div id="modal_area">
+    <div id="modal_back_area" class="modal_back_area"></div>
+    <div class="modal_wrapper">
+      <div class="modal_padding modal_title_wrapper">
+        <h4>範囲を選択してください</h4>
+      </div>
+      <div class="canvas_wrapper">
+        <td><canvas id="source_canvas" width="1" height="1"></canvas></td>
+      </div>
+      <button type="button" id="close_button">OK</button>
     </div>
   </div>
 </div>
-
-
 
 <% content_for :js do %>
   <%= javascript_import_module_tag 'user/crop_image' %>
