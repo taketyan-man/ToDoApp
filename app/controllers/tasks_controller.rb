@@ -4,7 +4,7 @@ class TasksController < ApplicationController
     @todo_done = ToDo.where(user_id: session[:user_id], done: true).includes(:fights, :comments).order(limit_date: "DESC")
 
     
-    @todo_fight = Fight.where(user_id: session[:user_id]).includes(:user, :to_do).order(create_at: "DESC")
+    @todo_fight = Fight.where(user_id: session[:user_id]).includes(:user, :to_do).order(created_at: "DESC")
     @user = User.find(session[:user_id])
   end
 
