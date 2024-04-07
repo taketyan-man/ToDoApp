@@ -30,7 +30,6 @@ Rails.application.routes.draw do
   get '/user/logout' => 'users#logout'
   get '/user/new' => 'users#new'
   post '/user/create' => 'users#create'
-  get '/user' => "users#index"
   get '/user/show/:id' => 'users#show'
   get '/user/:id/edit' => 'users#edit'
   patch '/user/:id/update' => 'users#update'
