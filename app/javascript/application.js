@@ -1,7 +1,6 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 import { Turbo } from "@hotwired/turbo-rails"
 Turbo.session.drive = false
-console.log("JS 使えてるねん！");
 import jquery from "jquery"
 window.$ = jquery
 
