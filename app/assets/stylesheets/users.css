@@ -264,13 +264,14 @@ input[type="submit"] {
   position: absolute;
   background-color: gray;
   top: 0;
+  left: 0;
   width: 100%;
   z-index: 10;
 }
 
 .modal_wrapper {
   margin: 60px;
-  padding: 60px;
+  padding: 30px;
 }
 
 .modal_back_area {
