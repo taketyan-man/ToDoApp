@@ -36,8 +36,33 @@ RSpec.describe "Users", type: :request do
       user =  FactoryBot.create(:user) 
       get user_logout_path
       post user_login_path, params: {
-        name: user.name,
+        name:     user.name,
         password: user.password
+      }
+      expect(response).to redirect_to tasks_path
+    end
+
+    it 'should not login with incorrect information' do
+      user = FactoryBot.create(:user)
+      get user_logout_path
+      post user_login_path, params: {
+        name:     "",
+        password: ""
+      }
+      expect(response).to redirect_to user_login_path
+    end
+
+    it 'should not login if not create user yet' do
+      post user_login_path, params: {
+        name:      "テスト",
+        password:  "1234"
+      }
+      expect(response).to redirect_to user_login_path
+      user = FactoryBot.create(:user)
+      get user_logout_path
+      post user_login_path, params: {
+        name:      user.name,
+        password:  user.password
       }
       expect(response).to redirect_to tasks_path
     end
