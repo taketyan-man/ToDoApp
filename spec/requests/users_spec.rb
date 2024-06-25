@@ -29,6 +29,17 @@ RSpec.describe "Users", type: :request do
         }
       }.to_not change(User, :count)
     end
+  end
 
+  describe 'POST /user/login' do   
+    it 'should login with correct information' do
+      user =  FactoryBot.create(:user) 
+      get user_logout_path
+      post user_login_path, params: {
+        name: user.name,
+        password: user.password
+      }
+      expect(response).to redirect_to tasks_path
+    end
   end
 end
