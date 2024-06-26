@@ -13,11 +13,11 @@
     <% end %>
     <%= form_tag("/user/create") do %>
       <p>ユーザー名(10文字以内)</p>
-      <input name="name" value="<%= @user.name %>">
+      <input  id="name"name="name" value="<%= @user.name %>" id="name">
       <p>メールアドレス</p>
-      <input name="email" value="<%= @user.email %>">
+      <input name="email" value="<%= @user.email %>" id="email">
       <p>パスワード</p>
-      <input type="password" name="password" value="<%= @user.password %>"></br>
+      <input type="password" name="password" value="<%= @user.password %>" id="password"></br>
       <div class="form-public-box">
         <input type="radio" id="public" name="public" value="true" class="public-radio" checked="checked"><label for="public" class="radio-label">公開</label>
         <input type="radio" id="notpublic" name="public" value="false" class="public-radio public-radio2"><label for="notpublic">非公開</label>
