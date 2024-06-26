@@ -40,16 +40,20 @@ RSpec.describe "Users", type: :request do
         password: user.password
       }
       expect(response).to redirect_to tasks_path
+      follow_redirect!
+      expect(response.body).to include('ログインできました')
     end
 
     it 'should not login with incorrect information' do
       user = FactoryBot.create(:user)
       get user_logout_path
       post user_login_path, params: {
-        name:     "",
+        name:     "test",
         password: ""
       }
       expect(response).to redirect_to user_login_path
+      follow_redirect!
+      expect(response.body).to include('パスワードが違います')
     end
 
     it 'should not login if not create user yet' do
@@ -58,13 +62,8 @@ RSpec.describe "Users", type: :request do
         password:  "1234"
       }
       expect(response).to redirect_to user_login_path
-      user = FactoryBot.create(:user)
-      get user_logout_path
-      post user_login_path, params: {
-        name:      user.name,
-        password:  user.password
-      }
-      expect(response).to redirect_to tasks_path
+      follow_redirect!
+      expect(response.body).to include('ユーザー名が見つかりません')
     end
   end
 end
