@@ -46,5 +46,16 @@ RSpec.describe "Users", type: :system do
       click_button "ログイン"
       expect(page).to have_content('ログインできました')
     end
+
+    it 'should not login with incorrect information' do
+      visit user_login_path
+
+      click_button "ログイン"
+      expect(page).to have_content('ユーザー名が見つかりません')
+
+      fill_in "name", with: "test"
+      click_button "ログイン"
+      expect(page).to have_content("パスワードが違います")
+    end
   end
 end
