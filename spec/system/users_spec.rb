@@ -34,4 +34,17 @@ RSpec.describe "Users", type: :system do
     end
 
   end
+
+  describe '#login' do
+    let!(:user) { FactoryBot.create(:user) }
+   
+    it 'should login with correct information' do
+      visit user_login_path
+      fill_in "name", with: "test"
+      fill_in "password", with: "1234"
+
+      click_button "ログイン"
+      expect(page).to have_content('ログインできました')
+    end
+  end
 end
