@@ -58,4 +58,22 @@ RSpec.describe "Users", type: :system do
       expect(page).to have_content("パスワードが違います")
     end
   end
+
+  describe '#udpate' do
+    let!(:user) { FactoryBot.create(:user) }
+
+    it 'should udpate with correct information' do
+      visit user_edit_path
+
+      fill_in "name", with:"test1"
+      fill_in "email", with: "abcd"
+      choose "非公開"
+
+      click_button "編集"
+      
+      visit_user_edit_path
+      expect(page).to have_content("test1")
+      expect(page).to have_content("abcd")
+    end
+  end
 end
