@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Users", type: :system do
+  include Helpers
   before do
     driven_by(:rack_test)
   end
@@ -63,11 +64,12 @@ RSpec.describe "Users", type: :system do
     let!(:user) { FactoryBot.create(:user) }
 
     it 'should udpate with correct information' do
-      visit user_edit_path
+      login_as(user)
+      expect(page).to have_content('ログインできました')
+      visit "/user/#{user.id}/edit"
 
       fill_in "name", with:"test1"
       fill_in "email", with: "abcd"
-      choose "非公開"
 
       click_button "編集"
       
