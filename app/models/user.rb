@@ -12,12 +12,13 @@ class User < ApplicationRecord
   attr_accessor :aspect_numerator
   attr_accessor :aspect_denominator
 
-  validates :name, presence: {message: "を入力してください"}
-  validates :name, length: {maximum: 10, message: "は最大10文字までです"}
-  validates :name, uniqueness: {message: "がすでに使われています"}
-  validates :email, presence: {message: "を入力してください"}, uniqueness: {message: "はすでに登録済みです"}
+  validates :name,     presence:   {message: "を入力してください"}
+  validates :name,     length:     {maximum: 10, message: "は最大10文字までです"}
+  validates :name,     uniqueness: {message: "がすでに使われています"}
+  validates :email,    presence:   {message: "を入力してください"}
+  validates :email,    uniqueness: {message: "はすでに登録済みです"}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, format: { with: VALID_EMAIL_REGEX }
-  validates :password, presence: {message: "を入力してください"}
-  validates :public, inclusion: { in: [true, false] }
+  validates :email,    format:     { with: VALID_EMAIL_REGEX }
+  validates :password, presence:   {message: "を入力してください"}
+  validates :public,   inclusion:  { in: [true, false] }
 end
