@@ -24,15 +24,11 @@ Rails.application.routes.draw do
   post '/tasks/delete' => 'tasks#delete'
   post '/tasks/:id/done' => 'tasks#done', as: 'done'
   get '/tasks' => 'tasks#index'
-
-  get '/user/login' => 'users#yourdetil'
-  post '/user/login' => 'users#login'
-  get '/user/logout' => 'users#logout'
-  get '/user/new' => 'users#new'
-  post '/user/create' => 'users#create'
-  get '/user/show/:id' => 'users#show'
-  get '/user/:id/edit' => 'users#edit'
-  patch '/user/:id/update' => 'users#update'
+  get '/login' => 'users#yourdetil'
+  post '/login' => 'users#login'
+  post '/logout' => 'users#logout'
+ 
+  resources :users 
   get '/' => "home#top", as: 'home'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

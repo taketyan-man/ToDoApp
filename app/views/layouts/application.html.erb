@@ -159,5 +159,6 @@
         <%= link_to("", "/tasks/new", class:"fas fa-plus-circle", style: "color: #74C0FC;") %>
       </footer>
     <% end %>
+    <%= debug(params) if Rails.env.development? %>
   </body>
 </html>

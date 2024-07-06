@@ -4,22 +4,14 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(
-      name: params[:name],
-      email: params[:email],
-      password: params[:password]
-    )
-    if params[:public] == "true"
-      @user.public = true
-    elsif params[:public] == "false"
-      @user.public = false
-    end
+    @user = User.new(user_params)
+    
     if @user.save
       session[:user_id] = @user.id
       flash[:notice] = "ユーザー登録成功しました"
       redirect_to tasks_path
     else
-      redirect_to user_new_path, flash: { error: @user.errors.full_messages }
+      redirect_to new_user_path, flash: { error: @user.errors.full_messages }
     end
   end
 
@@ -98,5 +90,9 @@ class UsersController < ApplicationController
         :user_image
       ]
       params.require(:user).permit(attrs)
+    end
+
+    def user_params
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :public)
     end
 end

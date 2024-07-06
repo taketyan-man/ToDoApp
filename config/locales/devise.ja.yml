@@ -5,9 +5,16 @@ ja:
         name: ユーザー名
         email: メールアドレス
         password: パスワード
+        password_confirmation: パスワード（確認用）
       tweet:
         text: テキスト
         image: 画像
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              blank: "パスワードを入力してください"
   activemodel:   # Formオブジェクトを用いた場合
      attributes:
        order_object:

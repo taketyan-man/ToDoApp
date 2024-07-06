@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_many :to_dos, dependent: :destroy
   has_many :reports, dependent: :destroy
   has_many :notices, dependent: :destroy
+
   mount_uploader :user_image, AvatarUploader
   attr_accessor :image_x
   attr_accessor :image_y
@@ -18,7 +19,8 @@ class User < ApplicationRecord
   validates :email,    presence:   {message: "を入力してください"}
   validates :email,    uniqueness: {message: "はすでに登録済みです"}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email,    format:     { with: VALID_EMAIL_REGEX }
-  validates :password, presence:   {message: "を入力してください"}
+  validates :email,    format:     { with: VALID_EMAIL_REGEX, message: "を正確に入力してください" }
+  has_secure_password
+  validates :password, presence: true, length: { minimum: 6, message: "が短すぎます" }, if: -> { new_record? || !password.nil? }
   validates :public,   inclusion:  { in: [true, false] }
 end

@@ -15,6 +15,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem "font-awesome-sass", "~> 6.4.2"
 gem "sqlite3"
+gem 'bcrypt'
 
 group :development, :test do
   gem "debug",   "1.7.1", platforms: %i[ mri mingw x64_mingw ]
