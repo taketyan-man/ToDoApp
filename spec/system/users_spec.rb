@@ -61,6 +61,12 @@ RSpec.describe "Users", type: :system do
   end
 
   describe '#udpate' do
+    before do
+      # 必要なファイルをコピー
+      FileUtils.cp(Rails.root.join('spec/support/assets/default_user_img.png'), Rails.root.join('app/assets/images/default_user_img.png'))
+    end
+
+
     let!(:user) { FactoryBot.create(:user) }
 
     it 'should udpate with correct information' do
@@ -68,14 +74,18 @@ RSpec.describe "Users", type: :system do
       expect(page).to have_content('ログインできました')
       visit "/user/#{user.id}/edit"
 
+      attach_file 'trim_img_uploder', Rails.root.join('spec/support/assets/default_user_img.png')
       fill_in "name", with:"test1"
       fill_in "email", with: "abcd"
 
+
       click_button "編集"
       
-      visit_user_edit_path
-      expect(page).to have_content("test1")
-      expect(page).to have_content("abcd")
+      visit "/user/#{user.id}/edit"
+      user_name = find('#user_name').value
+      expect(user_name).to eq('test1')
+      user_email = find('#user_email').value
+      expect(user_email).to eq('abcd')
     end
   end
 end
