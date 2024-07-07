@@ -62,18 +62,18 @@ class UsersController < ApplicationController
   end
 
   def login
-    @user = User.find_by(name: params[:name])
-    if @user && @user[:password] == params[:password]
+    @user = User.find_by(name: params[:user][:name])
+    if @user && @user[:password] == params[:user][:password]
       session[:user_id] = @user.id
       flash[:notice] =  "ログインできました"
       redirect_to tasks_path
-    elsif @user && @user[:password] != params[:password]
+    elsif @user && @user[:password] != params[:user][:password]
       flash[:notice] = "パスワードが違います"
-      params[:name] = params[:name]
-      redirect_to user_login_path
+      params[:user][:name] = params[:user][:name]
+      redirect_to login_path
     else
       flash[:notice] = "ユーザー名が見つかりません"
-      redirect_to user_login_path
+      redirect_to login_path
     end
 
   end
