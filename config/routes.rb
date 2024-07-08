@@ -26,7 +26,7 @@ Rails.application.routes.draw do
   get '/tasks' => 'tasks#index'
   get '/login' => 'users#yourdetil'
   post '/login' => 'users#login'
-  post '/logout' => 'users#logout'
+  get '/logout' => 'users#logout'
  
   resources :users 
   get '/' => "home#top", as: 'home'

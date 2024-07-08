@@ -7,7 +7,7 @@ class ProfilesController < ApplicationController
   def update
       if @user.update(user_params)
           flash[:notice] = "ユーザーを更新しました"
-          redirect_to  "/user/#{@user.id}/edit"
+          redirect_to  "/users/#{@user.id}/edit"
       else
           flash[:attention] = "ユーザーを更新できませんでした"
           render :edit

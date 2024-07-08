@@ -72,7 +72,7 @@ RSpec.describe "Users", type: :system do
     it 'should udpate with correct information' do
       login_as(user)
       expect(page).to have_content('ログインできました')
-      visit "/user/#{user.id}/edit"
+      visit "/users/#{user.id}/edit"
 
       attach_file 'trim_img_uploder', Rails.root.join('spec/support/assets/default_user_img.png')
       fill_in "name", with:"test1"
@@ -81,7 +81,7 @@ RSpec.describe "Users", type: :system do
 
       click_button "編集"
       
-      visit "/user/#{user.id}/edit"
+      visit "/users/#{user.id}/edit"
       user_name = find('#user_name').value
       expect(user_name).to eq('test1')
       user_email = find('#user_email').value

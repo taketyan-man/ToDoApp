@@ -68,7 +68,7 @@
                     <%= link_to('ToDoリスト', '/tasks', class:"homeUserList") %>
                   </li>
                   <li class="home-user-li">
-                    <%= link_to('ユーザ編集', "/user/#{session[:user_id]}/edit", class:"homeUserList") %>
+                    <%= link_to('ユーザ編集', "/users/#{session[:user_id]}/edit", class:"homeUserList") %>
                   </li>
                   <li class="home-user-li">
                     <%= link_to('ログアウト', '/logout', class:"homeUserList") %>
@@ -83,10 +83,10 @@
         <% else %>
           <ul>
             <li>
-              <%= link_to("新規登録", "/user/new", class:"userList") %>
+              <%= link_to("新規登録", "/users/new", class:"userList") %>
             </li>
             <li>
-              <%= link_to("ログイン", "/user/login", class:"userList") %>
+              <%= link_to("ログイン", "/login", class:"userList") %>
             </li>
           </ul>
         <% end %>
@@ -139,10 +139,10 @@
               <%= link_to('Myリスト', '/tasks', class:"homeUserList") %>
             </li>
             <li class="home-user-li">
-              <%= link_to('ユーザ編集', "/user/#{session[:user_id]}/edit", class:"homeUserList") %>
+              <%= link_to('ユーザ編集', "/users/#{session[:user_id]}/edit", class:"homeUserList") %>
             </li>
             <li class="home-user-li">
-              <%= link_to('ログアウト', '/user/logout', class:"homeUserList") %>
+              <%= link_to('ログアウト', '/logout', class:"homeUserList") %>
             </li>
           </ul>
         </div>
