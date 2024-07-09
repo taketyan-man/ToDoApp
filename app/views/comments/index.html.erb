@@ -8,11 +8,11 @@
     <p class="todo-text"><%= @todo.text %></p>
     <p class="todo-date"><%= @todo.limit_date %></p>
     <% if @todo.fighted?(session[:user_id]) %>
-      <%= link_to("#{Fight.where(to_do_id: @todo.id).size}","/tasks/#{@todo.id}/fight/#{Fight.find_by(user_id: session[:user_id], to_do_id: @todo.id).id}", class: "fas_button_border_after") %>
+      <%= link_to("#{Fight.where(to_do_id: @todo.id).size}","/todos/#{@todo.id}/fight/#{Fight.find_by(user_id: session[:user_id], to_do_id: @todo.id).id}", class: "fas_button_border_after") %>
     <% else %>
-      <%= link_to("#{Fight.where(to_do_id: @todo.id).size}","/tasks/#{@todo.id}/fight", class: "fas_button_border") %>
+      <%= link_to("#{Fight.where(to_do_id: @todo.id).size}","/todos/#{@todo.id}/fight", class: "fas_button_border") %>
     <% end %>
-    <%= link_to("#{Comment.where(to_do_id: @todo.id).size}", "/tasks/#{@todo.id}/comment/new", class: "fas_header_bordertransparent") %>
+    <%= link_to("#{Comment.where(to_do_id: @todo.id).size}", "/todos/#{@todo.id}/comment/new", class: "fas_header_bordertransparent") %>
   </div>
   <div class="comment-box">
   <% @comments.each do |comment| %>
@@ -24,14 +24,14 @@
       <p class="comment-text"><%= comment.text %></p>
       <div class="commets-edit">
         <% if session[:user_id] == comment.user_id %>
-          <%= link_to('' , "/tasks/comment/#{comment.id}/edit", class: "fas fa-pen fa-lg edit-pen") %>
+          <%= link_to('' , "/todos/comment/#{comment.id}/edit", class: "fas fa-pen fa-lg edit-pen") %>
         <% end %>
         <% if session[:user_id] == comment.user_id || session[:user_id] == @todo.user_id %>
           <i class="comment-delete fas fa-trash-alt fa-lg alert-button"></i>
           <div class="alert-box">
             <h3>本当に削除しますか？</h3>
             <div class="grid-herf">
-            <%= link_to('Yes', "/tasks/#{@todo.id}/comment/#{comment.id}/",class: "alert-yes" ) %>
+            <%= link_to('Yes', "/todos/#{@todo.id}/comment/#{comment.id}/",class: "alert-yes" ) %>
             <p class="alert-no">No</p>
             </div>
           </div>
@@ -40,7 +40,7 @@
           <div class="alert-box">
             <h3>本当に報告しますか？</h3>
             <div class="grid-herf">
-            <%= link_to('Yes', "/tasks/#{@todo.id}/comment/#{comment.id}/report",class: "alert-yes" ) %>
+            <%= link_to('Yes', "/todos/#{@todo.id}/comment/#{comment.id}/report",class: "alert-yes" ) %>
             <p class="alert-no">No</p>
             </div>
           </div>

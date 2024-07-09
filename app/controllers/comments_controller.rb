@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  def show
+  def index
     @todo = ToDo.find(params[:to_do_id])
     @comments = Comment.where(to_do_id: params[:to_do_id])
   end
@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
       @todo.comment += 1
       @todo.save
       notice_create_comment(@comment)
-      redirect_to("/tasks/#{@comment.to_do_id}/comment")
+      redirect_to("/todos/#{@comment.to_do_id}/comment")
     else
       flash[:attention] = "何か入力ミスをしています
       。確認してください。"
@@ -43,7 +43,7 @@ class CommentsController < ApplicationController
       render:edit, status: :unprocessable_entity
     elsif @comment.save
       flash[:notice] = "コメントの編集が完了しました"
-      redirect_to("/tasks/#{@comment.to_do_id}/comment")
+      redirect_to("/todos/#{@comment.to_do_id}/comment")
     else
       flash[:attention] = ["何か問題が発生しています", "確認してください"]
       render:edit, status: :unprocessable_entity
@@ -60,10 +60,10 @@ class CommentsController < ApplicationController
       @todo.comment -= 1
       @todo.save
       notice_delete_comment(@comment)
-      redirect_to("/tasks/#{@comment.to_do_id}/comment")
+      redirect_to("/todos/#{@comment.to_do_id}/comment")
     else
       flash[:attention] = "あなたにはその権限がありません。"
-      redirect_to("/tasks/#{@comment.to_do_id}/comment")
+      redirect_to("/todos/#{@comment.to_do_id}/comment")
     end
   end
 
@@ -76,10 +76,10 @@ class CommentsController < ApplicationController
     )
     if @report.save!
       flash[:notice] = "そのコメントを報告しました。"
-      redirect_to("/tasks/#{@comment.to_do_id}/comment")
+      redirect_to("/todos/#{@comment.to_do_id}/comment")
     else
       flash[:attention] = "報告に失敗しました。"
-      redirect_to("/tasks/#{@comment.to_do_id}/comment")
+      redirect_to("/todos/#{@comment.to_do_id}/comment")
     end
   end
 

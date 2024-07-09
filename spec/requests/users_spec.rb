@@ -41,7 +41,7 @@ RSpec.describe "Users", type: :request do
         name:     user.name,
         password: user.password
       }
-      expect(response).to redirect_to tasks_path
+      expect(response).to redirect_to todos_path
       follow_redirect!
       expect(response.body).to include('ログインできました')
     end

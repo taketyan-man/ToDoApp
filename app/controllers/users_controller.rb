@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       flash[:notice] = "ユーザー登録成功しました"
-      redirect_to tasks_path
+      redirect_to todos_path
     else
       redirect_to new_user_path, flash: { error: @user.errors.full_messages }
     end
@@ -50,7 +50,7 @@ class UsersController < ApplicationController
     end
     if @user.save
       flash[:notice] = "ユーザー情報の編集しました。"
-      redirect_to("/tasks")
+      redirect_to("/todos")
     else
       redirect_to "/users/#{@user.id}/edit", flash: { error: @user.errors.full_messages }
     end 
@@ -65,7 +65,7 @@ class UsersController < ApplicationController
     if @user && @user[:password] == params[:user][:password]
       session[:user_id] = @user.id
       flash[:notice] =  "ログインできました"
-      redirect_to tasks_path
+      redirect_to todos_path
     elsif @user && @user[:password] != params[:user][:password]
       flash[:notice] = "パスワードが違います"
       params[:user][:name] = params[:user][:name]

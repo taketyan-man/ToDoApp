@@ -1,4 +1,4 @@
-class TasksController < ApplicationController
+class TodosController < ApplicationController
   def index
     @todo = ToDo.where(user_id: session[:user_id], done: false).includes(:fights, :comments).order(limit_date: "ASC")
     @todo_done = ToDo.where(user_id: session[:user_id], done: true).includes(:fights, :comments).order(limit_date: "DESC")
@@ -12,11 +12,7 @@ class TasksController < ApplicationController
     @todo = ToDo.where(public: true).includes(:user, :fights).order(id: "DESC")
     @todo_fight = ToDo.where(public: true).includes(:user, :fights).order(fight: "DESC")
   end
-
-  def yourshow
-    @todo = ToDo.where(user_id: params[:user_id])
-  end
-
+  
   def new
     @todo = ToDo.new
   end
@@ -44,7 +40,7 @@ class TasksController < ApplicationController
       render:new, status: :unprocessable_entity
     elsif @todo.save
       flash[:notice] = "タスクの登録に成功しました"
-      redirect_to("/tasks")
+      redirect_to("/todos")
     else
       flash[:attention] = "何か入力ミスをしています
       。確認してください。"
@@ -73,7 +69,7 @@ class TasksController < ApplicationController
       render:edit, status: :unprocessable_entity
     elsif @todo.save
       flash[:notice] = "編集が完了しました"
-      redirect_to("/tasks")
+      redirect_to("/todos")
     else
       flash[:attention] = ["何か問題が発生しています", "確認してください"]
       render:edit, status: :unprocessable_entity
@@ -84,22 +80,17 @@ class TasksController < ApplicationController
     @todo = ToDo.find(params[:id])
     @todo.destroy
     flash[:notice] = "タスクを削除しました"
-    redirect_to("/tasks")
+    redirect_to("/todos")
   end
 
   def done
     @todo = ToDo.find(params[:id])
     if @todo.done
       @todo.update(done: false)
-      redirect_to tasks_path
+      redirect_to todos_path
     else
       @todo.update(done: true)
-      redirect_to tasks_path
+      redirect_to todos_path
     end
-  end
-
-  def yourshow
-    @user = User.find(params[:id])
-    @todos = Todo,where(user_id: params[:id])
   end
 end

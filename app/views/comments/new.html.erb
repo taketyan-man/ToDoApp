@@ -5,7 +5,7 @@
     </div>
   <% end %>
 
-  <%= form_tag("/tasks/#{params[:to_do_id]}/comment/create") do %>
+  <%= form_tag("/todos/#{params[:to_do_id]}/comment/create") do %>
     <div class="comment-new-form">
       <textarea class="newtext" name="text" value="<%= @comment.text %>" rows="5" cols="33"></textarea>
       <div class="submit-button comment-new-submit">

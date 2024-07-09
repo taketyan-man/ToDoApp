@@ -19,7 +19,7 @@
     <div class="header">
       <div class="header-title">
       <% if session[:user_id] %>
-        <%= link_to("ToDoパルス", "/tasks", class:"userList title") %>
+        <%= link_to("ToDoパルス", "/todos", class:"userList title") %>
       <% else %>
         <%= link_to("ToDoパルス", "/", class:"userList title") %>
       <% end %>
@@ -39,7 +39,7 @@
                 <div class="home-user-alert">
                   <ul class="notice-ul">
                     <% @notices.each do |notice| %>
-                      <%= link_to "/tasks/notice/#{notice.id}/checked" do %> 
+                      <%= link_to "/todos/notice/#{notice.id}/checked" do %> 
                       <li class="notice-li">
                         <% if notice.action == 0 %>
                           <p>あなたの投稿が応援されました。</p>
@@ -58,14 +58,14 @@
               <% end %>
             </li>
             <li> 
-              <%= link_to("", "/tasks/list", class:"userList fas fa-home") %>
+              <%= link_to("", "/todos/list", class:"userList fas fa-home") %>
             </li>
             <li>
               <a class="userList fas fa-user"></a>
               <div class="home-user-box">
                 <ul class="home-user-ul">
                   <li class="home-user-li">
-                    <%= link_to('ToDoリスト', '/tasks', class:"homeUserList") %>
+                    <%= link_to('ToDoリスト', '/todos', class:"homeUserList") %>
                   </li>
                   <li class="home-user-li">
                     <%= link_to('ユーザ編集', "/users/#{session[:user_id]}/edit", class:"homeUserList") %>
@@ -77,7 +77,7 @@
               </div>
             </li>
             <li>
-              <%= link_to("追加する", "/tasks/new", class:"userList taskAdd") %>
+              <%= link_to("追加する", "/todos/new", class:"userList taskAdd") %>
             </li>
           </ul>
         <% else %>
@@ -118,7 +118,7 @@
           <div class="home-user-alert">
             <ul class="notice-ul">
               <% @notices.each do |notice| %>
-                <%= link_to "/tasks/notice/#{notice.id}/checked" do %> 
+                <%= link_to "/todos/notice/#{notice.id}/checked" do %> 
                 <li class="notice-li">
                   <% if notice.action == 0 %>
                     <p>あなたの投稿が応援されました。</p>
@@ -138,7 +138,7 @@
         <div class="home-user-box">
           <ul class="home-user-ul">
             <li class="home-user-li">
-              <%= link_to('Myリスト', '/tasks', class:"homeUserList") %>
+              <%= link_to('Myリスト', '/todos', class:"homeUserList") %>
             </li>
             <li class="home-user-li">
               <%= link_to('ユーザ編集', "/users/#{session[:user_id]}/edit", class:"homeUserList") %>
@@ -156,9 +156,9 @@
     <% if session[:user_id] %>
       <footer>
         <a class="fas fa-bell footer-bell"></a>
-        <%= link_to("", "/tasks/list", class:"userList fas fa-home") %>
+        <%= link_to("", "/todos/list", class:"userList fas fa-home") %>
         <a class="userList fas fa-user footer-user"></a>
-        <%= link_to("", "/tasks/new", class:"fas fa-plus-circle", style: "color: #74C0FC;") %>
+        <%= link_to("", "/todos/new", class:"fas fa-plus-circle", style: "color: #74C0FC;") %>
       </footer>
     <% end %>
     <%= debug(params) if Rails.env.development? %>

@@ -1,6 +1,6 @@
 <div class="todo">
   <div class="todo-header">
-    <h1>ToDo追加</h1>
+    <h1>ToDo編集</h1>
     <div class="todo_main">
       <% @todo.errors.full_messages.each do |message| %>
         <div class="form-error">
@@ -8,15 +8,20 @@
         </div>
       <% end %>
 
-      <%= form_tag("/tasks/create") do %>
+      <%= form_tag("/todos/update") do %>
         <p>テキスト</p>
         <input name="text" value="<%= @todo.text %>">
         <p>リミット日時 例）2023-8-3</p>
         <input name="date" value="<%= @todo.limit_date %>">
         </br>
+        <input type="hidden" name="id" value="<%= @todo.id %>">
         <div class="submit-button">
-          <input type="submit" value="追加する">
+          <input type="submit" value="編集する">
         </div>
+      <% end %>
+      <%= form_tag ("/todos/delete") do %>
+        <input type="hidden" name="id" value="<%= @todo.id %>">
+        <input type="submit" value="削除する" class="show-btn">
       <% end %>
     </div>
   </div>
