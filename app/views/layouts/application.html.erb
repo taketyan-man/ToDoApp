@@ -97,11 +97,13 @@
       <div class="flash">
         <%= flash[:notice] %>
       </div>
+      <a class="flash-blank"></a>
     <% end %>
     <% if flash[:attention] %>
       <div class="attention">
         <%= flash[:attention] %>
       </div>
+     <a class="flash-blank"></a>
     <% end %>
     <div class="main">
       <%= yield %>

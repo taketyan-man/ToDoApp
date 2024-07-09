@@ -10,7 +10,6 @@
 }
 
 .user-header {
-  padding-top: 20px;
   text-align: center;
 }
 
@@ -79,6 +78,8 @@ input[type="submit"] {
   border-radius: 0 0 2px 2px;
   font-size: 14px;
 }
+
+
 
 .userEdit {
   padding-top: 8px;

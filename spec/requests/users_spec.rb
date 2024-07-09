@@ -1,14 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe "Users", type: :request do
-  describe "GET /user/new" do
+  describe "GET /users/new" do
     it "should show information correctly" do
       get new_user_path
       expect(response).to have_http_status :ok
     end
   end
 
-  describe "POST /user/create" do
+  describe "POST /users" do
     it 'should create with correct information' do
       expect {
         post create_user_path , params: { 
@@ -33,7 +33,7 @@ RSpec.describe "Users", type: :request do
     end
   end
 
-  describe 'POST /user/login' do   
+  describe 'POST /login' do   
     it 'should login with correct information' do
       user =  FactoryBot.create(:user) 
       get user_logout_path
