@@ -1,4 +1,4 @@
-class ToDo < ApplicationRecord
+class Todo < ApplicationRecord
   has_many :fights, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :reports, dependent: :destroy

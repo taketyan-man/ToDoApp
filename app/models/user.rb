@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_many :fights, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :to_dos, dependent: :destroy
+  has_many :todos, dependent: :destroy
   has_many :reports, dependent: :destroy
   has_many :notices, dependent: :destroy
 

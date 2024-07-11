@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @todos = ToDo.where(user_id: @user.id) 
+    @todos = Todo.where(user_id: @user.id) 
   end
 
   def edit
@@ -35,14 +35,14 @@ class UsersController < ApplicationController
     @user.update(user_params)
     if params[:public] == "true"
       @user.public = true
-      @todos = ToDo.where(user_id: params[:id], public: false)
+      @todos = Todo.where(user_id: params[:id], public: false)
       @todos.each do |todo|
         todo.public = true
         todo.save
       end
     elsif params[:public] == "false"
       @user.public = false
-      @todos = ToDo.where(user_id: params[:id], public: true)
+      @todos = Todo.where(user_id: params[:id], public: true)
       @todos.each do |todo|
         todo.public = false
         todo.save

@@ -43,7 +43,7 @@
                       <li class="notice-li">
                         <% if notice.action == 0 %>
                           <p>あなたの投稿が応援されました。</p>
-                          <p class="notice-text"><%= ToDo.find(notice.to_do_id).text %></p>
+                          <p class="notice-text"><%= ToDo.find(notice.todo_id).text %></p>
                         <% elsif notice.action == 1 %>
                           <p>あなたの投稿にコメントされました。</p>
                           <p class="notice-text"><%= Comment.find(notice.action_id).text %></p>
@@ -122,7 +122,7 @@
                 <li class="notice-li">
                   <% if notice.action == 0 %>
                     <p>あなたの投稿が応援されました。</p>
-                    <p class="notice-text"><%= ToDo.find(notice.to_do_id).text %></p>
+                    <p class="notice-text"><%= Todo.find(notice.todo_id).text %></p>
                   <% elsif notice.action == 1 %>
                     <p>あなたの投稿にコメントされました。</p>
                     <p class="notice-text"><%= Comment.find(notice.action_id).text %></p>

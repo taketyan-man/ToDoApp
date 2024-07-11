@@ -8,15 +8,20 @@
         </div>
       <% end %>
 
-      <%= form_tag("/todos/update") do %>
-        <p>テキスト</p>
-        <input name="text" value="<%= @todo.text %>">
-        <p>リミット日時 例）2023-8-3</p>
-        <input name="date" value="<%= @todo.limit_date %>">
+      <%= form_with(model: @todo, local: true) do |form| %>
+        <div class="field">
+          <p><%= form.label :text %></p>
+          <%= form.text_field :text, value: @todo.text %>
+        </div>
+        <div class="field">
+          <p><%= form.label :limit_date %>例) 2024-9-2</p>
+          <%= form.date_field :limit_date, value: @todo.limit_date %>
+        </div>
+        
         </br>
-        <input type="hidden" name="id" value="<%= @todo.id %>">
+        <%= form.hidden_field :id, value: @todo.id %>
         <div class="submit-button">
-          <input type="submit" value="編集する">
+          <%= form.submit '編集する' %>
         </div>
       <% end %>
       <%= form_tag ("/todos/delete") do %>

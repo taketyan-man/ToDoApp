@@ -4,16 +4,16 @@ Rails.application.routes.draw do
   
   get '/todos/notice/:id/checked' => 'notices#checked'
 
-    # get '/todos/:to_do_id/comment/:id/report' => 'comments#report'
-    # get '/todos/:to_do_id/comment'  => 'comments#show'
-    # get '/todos/:to_do_id/comment/new' => 'comments#new'
-    # post '/todos/:to_do_id/comment/create'  => 'comments#create'
-    # get '/todos/:to_do_id/comment/:id'  => 'comments#destroy'
+    # get '/todos/:todo_id/comment/:id/report' => 'comments#report'
+    # get '/todos/:todo_id/comment'  => 'comments#show'
+    # get '/todos/:todo_id/comment/new' => 'comments#new'
+    # post '/todos/:todo_id/comment/create'  => 'comments#create'
+    # get '/todos/:todo_id/comment/:id'  => 'comments#destroy'
     # get '/todos/comment/:id/edit' => 'comments#edit'
     # post '/todos/comment/:id/update' => 'comments#update'
 
-  get '/todos/:to_do_id/fight' => 'fights#create'
-  get '/todos/:to_do_id/fight/:id' => 'fights#destroy'
+  get '/todos/:todo_id/fight' => 'fights#create'
+  get '/todos/:todo_id/fight/:id' => 'fights#destroy'
 
   get '/login' => 'users#yourdetil'
   post '/login' => 'users#login'
