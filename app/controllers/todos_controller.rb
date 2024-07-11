@@ -18,33 +18,18 @@ class TodosController < ApplicationController
   end
 
   def create
-    @todo = Todo.new(
-      text: params[:text],
-      user_id: session[:user_id],
-      limit_date: params[:date],
-      done: false,
-      fight: 0,
-      comment: 0
-    )
+    @todo = Todo.new(todo_params)
     @user = User.find(session[:user_id])
     if @user.public
       @todo.public = true
     else
       @todo.public = false
     end
-    if @todo[:limit_date].nil?
-      flash[:attention] = "リミット日時を正しく入力してください"
-      render:new, status: :unprocessable_entity
-    elsif @todo[:text].blank?
-      flash[:attention] = "テキストを正しく入力してください"
-      render:new, status: :unprocessable_entity
-    elsif @todo.save
+    if @todo.save
       flash[:notice] = "タスクの登録に成功しました"
       redirect_to("/todos")
     else
-      flash[:attention] = "何か入力ミスをしています
-      。確認してください。"
-      render:new, status: :unprocessable_entity
+      render :new, flash: { error: @todo.errors.full_messages }
     end
   end
 
@@ -93,4 +78,9 @@ class TodosController < ApplicationController
       redirect_to todos_path
     end
   end
+
+  private
+    def todo_params
+      params.require(:todo).permit(:text, :limit_date, :public, :user_id, :done, :fight, :comment)
+    end
 end

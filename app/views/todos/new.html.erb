@@ -2,20 +2,26 @@
   <div class="todo-header">
     <h1>ToDo追加</h1>
     <div class="todo_main">
-      <% @todo.errors.full_messages.each do |message| %>
-        <div class="form-error">
-          <%= message %>
-        </div>
+      <% if @todo.errors.present? %>
+        <% @todo.errors.full_messages.each do |message| %>
+          <div class="form-error">
+            <%= message %>
+          </div>
+        <% end %>
       <% end %>
 
-      <%= form_tag("/todos/create") do %>
-        <p>テキスト</p>
-        <input name="text" value="<%= @todo.text %>">
-        <p>リミット日時 例）2023-8-3</p>
-        <input name="date" value="<%= @todo.limit_date %>">
-        </br>
+      <%= form_with(model: @todo, local: true) do |form| %>
+        <div class="field">
+          <p><%= form.label :text %></p>
+          <%= form.text_field :text %>
+        </div>
+        <div class="field">
+          <p><%= form.label :limit_date %></p>
+          <%= form.date_field :limit_date %>
+        </div>
+        <%= form.hidden_field :user_id, value: session[:user_id] %>
         <div class="submit-button">
-          <input type="submit" value="追加する">
+          <%= form.submit '追加する' %>
         </div>
       <% end %>
     </div>

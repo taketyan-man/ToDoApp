@@ -4,9 +4,9 @@ class CreateToDos < ActiveRecord::Migration[7.0]
       t.string :text
       t.references :user, null: false, foreign_key: true
       t.date :limit_date
-      t.boolean :done
-      t.integer :fight 
-      t.integer :comment
+      t.boolean :done, default: false
+      t.integer :fight, default: 0
+      t.integer :comment, default: 0
       t.boolean :public
       
       t.timestamps

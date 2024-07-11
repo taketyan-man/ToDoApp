@@ -59,9 +59,9 @@ ActiveRecord::Schema[7.0].define(version: 2025_04_05_162014) do
     t.string "text"
     t.integer "user_id", null: false
     t.date "limit_date"
-    t.boolean "done"
-    t.integer "fight"
-    t.integer "comment"
+    t.boolean "done", default: false
+    t.integer "fight", default: 0
+    t.integer "comment", default: 0
     t.boolean "public"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

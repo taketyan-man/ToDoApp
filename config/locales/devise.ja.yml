@@ -6,9 +6,9 @@ ja:
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワード（確認用）
-      tweet:
+      todo:
         text: テキスト
-        image: 画像
+        limit_date: 締切日
     errors:
       models:
         user:
