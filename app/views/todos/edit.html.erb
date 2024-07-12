@@ -10,20 +10,20 @@
 
       <%= form_with(model: @todo, local: true) do |form| %>
         <div class="field">
-          <p><%= form.label :text %></p>
+          <p><%= form.label :text %></p>  
           <%= form.text_field :text, value: @todo.text %>
         </div>
         <div class="field">
-          <p><%= form.label :limit_date %>例) 2024-9-2</p>
+          <p><%= form.label :limit_date %></p>
           <%= form.date_field :limit_date, value: @todo.limit_date %>
         </div>
         
         </br>
-        <%= form.hidden_field :id, value: @todo.id %>
         <div class="submit-button">
           <%= form.submit '編集する' %>
         </div>
       <% end %>
+      <%= link_to "削除", todo_path(@todo), method: :delete, data: { confirm: "本当に削除しますか？" } %>
       <%= form_tag ("/todos/delete") do %>
         <input type="hidden" name="id" value="<%= @todo.id %>">
         <input type="submit" value="削除する" class="show-btn">

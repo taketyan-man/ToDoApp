@@ -39,33 +39,18 @@ class TodosController < ApplicationController
 
   def update
     @todo = Todo.find(params[:id])
-    @todo.text = params[:text]
-    @todo.limit_date = params[:date]
-    if params[:public] == "true"
-      @todo.public = true
-    elsif params[:public] == "false"
-      @todo.public = false
-    end
-    if @todo[:limit_date].nil?
-      flash[:attention] = "リミット日時を正しく入力してください"
-      render:edit, status: :unprocessable_entity
-    elsif @todo[:text].blank?
-      flash[:attention] = "テキストを正しく入力してください"
-      render:edit, status: :unprocessable_entity
-    elsif @todo.save
+    if @todo.update(todo_params)
       flash[:notice] = "編集が完了しました"
-      redirect_to("/todos")
+      redirect_to @todo
     else
-      flash[:attention] = ["何か問題が発生しています", "確認してください"]
-      render:edit, status: :unprocessable_entity
+      render :edit 
     end
   end
 
-  def delete
+  def destroy
     @todo = Todo.find(params[:id])
     @todo.destroy
-    flash[:notice] = "タスクを削除しました"
-    redirect_to("/todos")
+    redirect_to todos_path, notice: "タスクを削除しました"
   end
 
   def done
