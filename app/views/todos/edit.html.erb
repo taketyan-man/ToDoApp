@@ -23,8 +23,7 @@
           <%= form.submit '編集する' %>
         </div>
       <% end %>
-      <%= link_to "削除", todo_path(@todo), method: :delete, data: { confirm: "本当に削除しますか？" } %>
-      <%= form_tag ("/todos/delete") do %>
+      <%= form_with(url: todo_path(@todo), local:true, method: :delete) do %>
         <input type="hidden" name="id" value="<%= @todo.id %>">
         <input type="submit" value="削除する" class="show-btn">
       <% end %>
