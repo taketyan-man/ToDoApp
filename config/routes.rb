@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     member do
       post 'done'
     end
-    resources 'comment', except: [:show] do
+    resources 'comments', except: [:show] do
       member do
         get 'report'
       end
