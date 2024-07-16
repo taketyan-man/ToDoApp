@@ -12,7 +12,7 @@
     <div class="todo-list-box todo-index-active">
     <% @todo.each do |todo| %>
       <div class="show-todo-box">
-        <%= link_to "/todos/#{todo.id}/comment",class: "comment-link" do %>
+        <%= link_to "/todos/#{todo.id}/comments",class: "comment-link" do %>
           <div class="text-left">
             <%= image_tag "#{todo.user.user_image.cropped}", class:"todo-user-img"%>
             <h2><%= todo.user.name %></h2>
@@ -34,7 +34,7 @@
           <% elsif todo.fight == 0 %>
             <%= link_to("#{todo.fight}","/todos/#{todo.id}/fight", class: "fas_button_border") %>
           <% end %>
-          <%= link_to("#{todo.comment}", "/todos/#{todo.id}/comment/new", class: "fas_header_bordertransparent") %>
+          <%= link_to("#{todo.comment}", "/todos/#{todo.id}/comments/new", class: "fas_header_bordertransparent") %>
         <% end %>
       </div>
     <% end %>
@@ -43,7 +43,7 @@
     <div class="todo-list-box">
       <% @todo_fight.each do |todo| %>
         <div class="show-todo-box">
-        <%= link_to "/todos/#{todo.id}/comment",class: "comment-link" do %> 
+        <%= link_to "/todos/#{todo.id}/comments",class: "comment-link" do %> 
           <div class="text-left">
             <%= image_tag "#{todo.user.user_image.cropped}", class:"todo-user-img"%>
             <h2><%= todo.user.name %></h2>
@@ -62,7 +62,7 @@
           <% if todo.fights.size == 0 %>
             <%= link_to("#{todo.fight}","/todos/#{todo.id}/fight", class: "fas_button_border") %>
           <% end %>
-          <%= link_to("#{todo.comment}", "/todos/#{todo.id}/comment/new", class: "fas_header_bordertransparent") %>
+          <%= link_to("#{todo.comment}", "/todos/#{todo.id}/comments/new", class: "fas_header_bordertransparent") %>
         <% end %>
         </div>
       <% end %>

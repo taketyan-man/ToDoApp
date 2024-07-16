@@ -45,10 +45,10 @@
         <% @todo.each do |todo| %>
           <div class="todo-list <%= 'todo-list-out' if todo.limit_date <= Date.today %>">
           <div class="list-grid">
-            <%= link_to "/todos/#{todo.id}/comment",class: "comment-link" do %> 
+            <%= link_to "/todos/#{todo.id}/comments",class: "comment-link" do %> 
               <p class="todo-list-text index-text-box"><%= todo.text %></p>
             <% end %>
-            <%= link_to "/todos/#{todo.id}/comment",class: "comment-link" do %> 
+            <%= link_to "/todos/#{todo.id}/comments",class: "comment-link" do %> 
               <div class="limit-box"><p class="index-limit"><%= todo.limit_date %></p></div> 
             <% end %>
             <div class="index-btn-box">
@@ -69,7 +69,7 @@
           <% if todo.fights.size == 0 %>
             <%= link_to("#{todo.fight}","/todos/#{todo.id}/fight", class: "fas_button_border") %>
           <% end %>
-          <%= link_to("#{todo.comment}", "/todos/#{todo.id}/comment/new", class: "fas_header_bordertransparent") %>  
+          <%= link_to("#{todo.comment}", "/todos/#{todo.id}/comments/new", class: "fas_header_bordertransparent") %>  
           <%= link_to("","/todos/#{todo.id}/edit", class: "fas fa-pen fa-lg edit-pen") %>
           </div>
         </div>
@@ -88,10 +88,10 @@
           <% @todo_done.each do |todo| %>
             <div class="todo-list">
               <div class="list-grid">
-                <%= link_to "/todos/#{todo.id}/comment",class:  "comment-link" do %> 
+                <%= link_to "/todos/#{todo.id}/comments",class:  "comment-link" do %> 
                   <p class="todo-list-text index-text-box"><%= todo.text %></p>
                 <% end %>
-                <%= link_to "/todos/#{todo.id}/comment",class: "comment-link" do %> 
+                <%= link_to "/todos/#{todo.id}/comments",class: "comment-link" do %> 
                   <div class="limit-box"><p class="index-limit"><%= todo.limit_date %></p></div> 
                 <% end %>
                 <div class="index-btn-box">
@@ -111,7 +111,7 @@
               <% if todo.fights.size == 0 %>
                 <%= link_to("#{todo.fight}","/todos/#{todo.id}/fight", class: "fas_button_border") %>
               <% end %>
-              <%= link_to("#{todo.comment}", "/todos/#{todo.id}/comment/new", class: "fas_header_bordertransparent") %>
+              <%= link_to("#{todo.comment}", "/todos/#{todo.id}/comments/new", class: "fas_header_bordertransparent") %>
 
               <%= link_to("","/todos/#{todo.id}/edit", class: "fas fa-pen fa-lg edit-pen") %>
               </div>
