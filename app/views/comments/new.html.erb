@@ -1,13 +1,17 @@
 <div class="comment-new-box">
-  <% @comment.errors.full_messages.each do |message| %>
+  <% if flash[:error].present? %>
+  <% flash[:error].each do |message| %>
     <div class="form-error">
       <%= message %>
     </div>
   <% end %>
+  <% end %>
 
-  <%= form_with(model: @todo, local: true) do |form| %>
+  <%=  form_with(model: [@todo, @comment], local: true) do |form| %>
     <div class="comment-new-form">
       <%= form.text_area :text, class: "newtext", rows: 5, cols: 33 %>
+      <%= form.hidden_field :user_id, value: session[:user_id] %>
+      <%= form.hidden_field :todo_id, value: params[:todo_id] %>
       <div class="submit-button comment-new-submit">
         <%= form.submit "コメントする" %>
       </div>

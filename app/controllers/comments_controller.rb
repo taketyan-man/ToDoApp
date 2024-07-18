@@ -5,29 +5,21 @@ class CommentsController < ApplicationController
   end
 
   def new
+    @todo = Todo.find(params[:todo_id])
     @comment = Comment.new
   end
 
   def create
-    @comment = Comment.new(
-      user_id: session[:user_id],
-      todo_id: params[:todo_id],
-      text: params[:text]
-    )
-    if @comment.text.blank?
-      flash[:attention] = "テキストを正しく入力してください"
-      render:new, status: :unprocessable_entity
-    elsif @comment.save
+    @comment = Comment.new(comment_params)
+    @todo = Todo.find(params[:todo_id])
+    if @comment.save
       flash[:notice] = "コメントを投稿しました"
-      @todo = Todo.find(params[:todo_id])
       @todo.comment += 1
       @todo.save
       notice_create_comment(@comment)
-      redirect_to("/todos/#{@comment.todo_id}/comment")
-    else
-      flash[:attention] = "何か入力ミスをしています
-      。確認してください。"
-      render:new, status: :unprocessable_entity
+      redirect_to todo_comments_path(@todo)
+    else  
+      redirect_to new_todo_comment_path(@todo)  , flash: { error: @comment.errors.full_messages }
     end
   end
 
@@ -84,6 +76,10 @@ class CommentsController < ApplicationController
   end
 
 private
+  def comment_params
+    params.require(:comment).permit(:text, :user_id, :todo_id)
+  end
+
   def notice_create_comment(data)
     @notice = Notice.new(
         receivor_id: Todo.find(data.todo_id).user_id,
