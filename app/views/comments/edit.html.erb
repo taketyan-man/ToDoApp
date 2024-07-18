@@ -5,7 +5,7 @@
     </div>
   <% end %>
 
-  <%= form_tag("/todos/#{@todo.id}/comment/#{@comment.id}/update") do %>
+  <%= form_tag("/todos/#{@todo.id}/comments/#{@comment.id}/update") do %>
     <div class="comment-new-form">
       <textarea class="newtext" name="text" rows="5" cols="33"><%= @comment.text %></textarea>
       <div class="submit-button comment-new-submit">

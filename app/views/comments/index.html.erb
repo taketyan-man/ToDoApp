@@ -12,7 +12,7 @@
     <% else %>
       <%= link_to("#{Fight.where(todo_id: @todo.id).size}","/todos/#{@todo.id}/fight", class: "fas_button_border") %>
     <% end %>
-    <%= link_to("#{Comment.where(todo_id: @todo.id).size}", "/todos/#{@todo.id}/comment/new", class: "fas_header_bordertransparent") %>
+    <%= link_to("#{Comment.where(todo_id: @todo.id).size}", "/todos/#{@todo.id}/comments/new", class: "fas_header_bordertransparent") %>
   </div>
   <div class="comment-box">
   <% @comments.each do |comment| %>
@@ -31,7 +31,7 @@
           <div class="alert-box">
             <h3>本当に削除しますか？</h3>
             <div class="grid-herf">
-            <%= link_to('Yes', "/todos/#{@todo.id}/comment/#{comment.id}/",class: "alert-yes" ) %>
+            <%= link_to('Yes', "/todos/#{@todo.id}/comments/#{comment.id}/",class: "alert-yes" ) %>
             <p class="alert-no">No</p>
             </div>
           </div>
@@ -40,7 +40,7 @@
           <div class="alert-box">
             <h3>本当に報告しますか？</h3>
             <div class="grid-herf">
-            <%= link_to('Yes', "/todos/#{@todo.id}/comment/#{comment.id}/report",class: "alert-yes" ) %>
+            <%= link_to('Yes', "/todos/#{@todo.id}/comments/#{comment.id}/report",class: "alert-yes" ) %>
             <p class="alert-no">No</p>
             </div>
           </div>
