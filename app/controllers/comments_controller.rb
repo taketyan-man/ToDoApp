@@ -25,20 +25,17 @@ class CommentsController < ApplicationController
 
   def edit
     @comment = Comment.find(params[:id])
+    @todo = Todo.find(params[:todo_id])
   end
 
   def update
     @comment = Comment.find(params[:id])
-    @comment.text = params[:text]
-    if @comment[:text].blank?
-      flash[:attention] = "テキストを正しく入力してください"
-      render:edit, status: :unprocessable_entity
-    elsif @comment.save
+    @todo = Todo.find(params[:todo_id])
+    if @comment.update(comment_params)
       flash[:notice] = "コメントの編集が完了しました"
-      redirect_to("/todos/#{@comment.todo_id}/comment")
+      redirect_to todo_comments_path(@todo)
     else
-      flash[:attention] = ["何か問題が発生しています", "確認してください"]
-      render:edit, status: :unprocessable_entity
+      redirect_to edit_todo_comment_path(@todo)  , flash: { error: @comment.errors.full_messages }
     end
   end
 

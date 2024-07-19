@@ -24,7 +24,7 @@
       <p class="comment-text"><%= comment.text %></p>
       <div class="commets-edit">
         <% if session[:user_id] == comment.user_id %>
-          <%= link_to('' , "/todos/comment/#{comment.id}/edit", class: "fas fa-pen fa-lg edit-pen") %>
+          <%= link_to('' , "/todos/#{@todo.id}/comments/#{comment.id}/edit", class: "fas fa-pen fa-lg edit-pen") %>
         <% end %>
         <% if session[:user_id] == comment.user_id || session[:user_id] == @todo.user_id %>
           <i class="comment-delete fas fa-trash-alt fa-lg alert-button"></i>

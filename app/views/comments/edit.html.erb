@@ -1,15 +1,17 @@
 <div class="comment-new-box">
-  <% @comment.errors.full_messages.each do |message| %>
-    <div class="form-error">
-      <%= message %>
-    </div>
+  <% if flash[:error].present? %>
+    <% flash[:error].each do |message| %>
+      <div class="form-error">
+        <%= message %>
+      </div>
+    <% end %>
   <% end %>
 
-  <%= form_tag("/todos/#{@todo.id}/comments/#{@comment.id}/update") do %>
+  <%= form_with(model: [@todo, @comment], local: true) do |form| %>
     <div class="comment-new-form">
-      <textarea class="newtext" name="text" rows="5" cols="33"><%= @comment.text %></textarea>
+       <%= form.text_area :text, class: "newtext", rows: 5, cols: 33, value: @comment.text %>
       <div class="submit-button comment-new-submit">
-        <input type="submit" value="編集する">
+        <%= form.submit "編集する" %>
       </div>
     </div>
   <% end %>

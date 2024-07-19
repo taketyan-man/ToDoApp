@@ -1,10 +1,10 @@
 <div class="comment-new-box">
   <% if flash[:error].present? %>
-  <% flash[:error].each do |message| %>
-    <div class="form-error">
-      <%= message %>
-    </div>
-  <% end %>
+    <% flash[:error].each do |message| %>
+      <div class="form-error">
+        <%= message %>
+      </div>
+    <% end %>
   <% end %>
 
   <%=  form_with(model: [@todo, @comment], local: true) do |form| %>
