@@ -8,11 +8,11 @@
     <p class="todo-text"><%= @todo.text %></p>
     <p class="todo-date"><%= @todo.limit_date %></p>
     <% if @todo.fighted?(session[:user_id]) %>
-      <%= link_to("#{@todo.fights.size}","/todos/#{@todo.id}/fight/#{Fight.find_by(user_id: session[:user_id], todo_id: @todo.id).id}", class: "fas_button_border_after") %>
+      <%= link_to("#{@todo.fights.size}","/todos/#{@todo.id}/fights/#{Fight.find_by(user_id: session[:user_id], todo_id: @todo.id).id}", class: "fas_button_border_after", method: :post) %>
     <% else %>
-      <%= link_to("#{Fight.where(todo_id: @todo.id).size}","/todos/#{@todo.id}/fight", class: "fas_button_border") %>
+      <%= link_to("#{@todo.fights.size}","/todos/#{@todo.id}/fights", class: "fas_button_border", method: :delete) %>
     <% end %>
-    <%= link_to("#{Comment.where(todo_id: @todo.id).size}", "/todos/#{@todo.id}/comments/new", class: "fas_header_bordertransparent") %>
+    <%= link_to("#{@comments.size}", "/todos/#{@todo.id}/comments/new", class: "fas_header_bordertransparent") %>
   </div>
   <div class="comment-box">
   <% @comments.each do |comment| %>
