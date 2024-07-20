@@ -12,15 +12,13 @@ Rails.application.routes.draw do
     # get '/todos/comment/:id/edit' => 'comments#edit'
     # post '/todos/comment/:id/update' => 'comments#update'
 
-  get '/todos/:todo_id/fight' => 'fights#create'
-  get '/todos/:todo_id/fight/:id' => 'fights#destroy'
-
   get '/login' => 'users#yourdetil'
   post '/login' => 'users#login'
   get '/logout' => 'users#logout'
  
   resources :users
   resources :todos do
+    resources :fights, only: [:create, :destroy]
     member do
       post 'done'
     end

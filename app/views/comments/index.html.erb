@@ -8,7 +8,7 @@
     <p class="todo-text"><%= @todo.text %></p>
     <p class="todo-date"><%= @todo.limit_date %></p>
     <% if @todo.fighted?(session[:user_id]) %>
-      <%= link_to("#{Fight.where(todo_id: @todo.id).size}","/todos/#{@todo.id}/fight/#{Fight.find_by(user_id: session[:user_id], todo_id: @todo.id).id}", class: "fas_button_border_after") %>
+      <%= link_to("#{@todo.fights.size}","/todos/#{@todo.id}/fight/#{Fight.find_by(user_id: session[:user_id], todo_id: @todo.id).id}", class: "fas_button_border_after") %>
     <% else %>
       <%= link_to("#{Fight.where(todo_id: @todo.id).size}","/todos/#{@todo.id}/fight", class: "fas_button_border") %>
     <% end %>
